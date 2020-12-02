@@ -1,0 +1,12 @@
+@import "./colours.scss";
+
+button {
+  margin-top: 30px;
+  background: $color-1 !important;
+  padding: 15px 30px !important;
+  height: auto !important;
+  border: none !important;
+  span {
+    color: white !important;
+  }
+}

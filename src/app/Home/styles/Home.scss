@@ -1,0 +1,65 @@
+@import "../../../styles/colours.scss";
+
+// showcase
+.home-showcase {
+  background: white;
+  &__image {
+    border-radius: 50%;
+    position: relative;
+    display: block;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 20px;
+      background-color: $color-3;
+    }
+  }
+}
+
+// showcase
+.home-news {
+  &__posts {
+    flex-wrap: nowrap !important;
+    gap: 10px;
+  }
+
+  &-title {
+    font-weight: 400 !important;
+    margin-bottom: 20px !important;
+  }
+
+  &-card {
+    box-shadow: 0 0 2px rgba($color: $color-1, $alpha: 0.1);
+    &__title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      &-col {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .ant-btn:hover,
+      .ant-btn:focus {
+        border-color: $color-1;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+// projects {
+.home-projects {
+  background: white;
+  &-meta {
+    background: $color-2;
+    padding: 5px 10px;
+    color: white !important;
+    border-radius: 20px;
+    margin-bottom: 20px !important;
+    display: inline-block;
+  }
+}

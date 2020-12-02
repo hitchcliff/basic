@@ -1,0 +1,11 @@
+@import "./styles/colours.scss";
+
+// containers
+.default {
+  padding: 80px 400px;
+}
+
+// antd
+.ant-col {
+  padding: 0 !important;
+}

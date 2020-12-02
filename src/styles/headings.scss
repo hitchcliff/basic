@@ -1,0 +1,15 @@
+@import "./colours.scss";
+
+h1,
+h2 {
+  color: $color-1 !important;
+  margin-bottom: 40px !important;
+}
+
+p,
+h4,
+h5,
+h6,
+span {
+  color: $color-2 !important;
+}
