@@ -1,0 +1,32 @@
+.dashboard {
+  min-height: 100vh;
+  flex-direction: column !important;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &__heading {
+      color: white !important;
+      margin: 0 !important;
+    }
+    &__menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: none;
+      border: none;
+      color: white;
+    }
+  }
+
+  &-content {
+    height: 100%;
+  }
+
+  &-sider {
+    background: white;
+    height: 100%;
+  }
+}
