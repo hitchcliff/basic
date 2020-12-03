@@ -11,10 +11,10 @@ const { Content } = Layout;
 function App() {
   return (
     <>
-      {/* <Navigation />
-      <Home />
-      <Footer /> */}
+      {/* <Navigation /> */}
+      {/* <Home /> */}
       <Dashboard />
+      {/* <Footer /> */}
     </>
   );
 }

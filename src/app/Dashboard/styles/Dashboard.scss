@@ -1,8 +1,11 @@
 .dashboard {
   min-height: 100vh;
+  height: 100%;
+  position: relative;
   flex-direction: column !important;
 
   &-header {
+    z-index: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,12 +24,29 @@
     }
   }
 
-  &-content {
-    height: 100%;
-  }
-
   &-sider {
     background: white;
+    z-index: 0;
+  }
+
+  &-content {
+    z-index: 1;
     height: 100%;
+    padding: 100px;
+  }
+}
+
+//add post
+.dashboard-add-post {
+  background: white;
+
+  &__button {
+    margin: 25px 0 0 0;
+    padding: 5px 15px !important;
+    background: none !important;
+    border: 0.5px solid gray !important;
+    span {
+      color: gray !important;
+    }
   }
 }

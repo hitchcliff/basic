@@ -10,3 +10,28 @@ button {
     color: white !important;
   }
 }
+
+.delete-button {
+  padding: 5px 10px !important;
+  color: white !important;
+  background-color: #bf3636 !important;
+  margin-right: 10px;
+}
+
+.update-button {
+  padding: 5px 10px !important;
+}
+
+.anticon-delete {
+  background: none !important;
+}
+
+.ant-upload-list-item-card-actions-btn {
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ant-upload-list-item-card-actions-btn span {
+  color: #bf3636 !important;
+}

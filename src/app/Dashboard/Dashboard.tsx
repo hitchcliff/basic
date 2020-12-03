@@ -1,5 +1,7 @@
-import { Card, Layout, Menu, Row, Typography } from "antd";
-import React from "react";
+import { Card, Layout, Menu, Row, Typography, Col, Button } from "antd";
+import React, { useState } from "react";
+import Comments from "./Comments";
+import Posts from "./Post";
 
 const { Header, Content, Sider } = Layout;
 const { Title, Text, Paragraph } = Typography;
@@ -25,14 +27,14 @@ export default function Dashboard() {
           <Menu.Item>Projects</Menu.Item>
         </Menu>
       </Header>
-      <Content className={BEM.Content}>
-        <Sider className={BEM.Sider} width={300}>
-          Hello
+      <Layout>
+        <Sider className={BEM.Sider} width={350}>
+          <Comments />
         </Sider>
-        {/* <Card>
-          <Title level={4}>First posts</Title>
-        </Card> */}
-      </Content>
+        <Content className={BEM.Content}>
+          <Posts />
+        </Content>
+      </Layout>
     </Layout>
   );
 }
