@@ -1,0 +1,44 @@
+@import "../../../styles/colours.scss";
+.footer {
+  padding: 150px 300px;
+  background: $color-4;
+
+  &__title {
+    color: white !important;
+  }
+
+  &__text {
+    color: white !important;
+    opacity: 0.2;
+    display: block;
+    padding-right: 150px;
+  }
+
+  &__icons {
+    color: white !important;
+    font-size: 1.5rem;
+    margin-right: 12px;
+    opacity: 0.2;
+  }
+
+  &--text {
+    color: white !important;
+    border-bottom: 2px solid white;
+  }
+
+  &--title {
+    color: white !important;
+    opacity: 0.2;
+    &--quote {
+      color: white !important;
+      opacity: 0.2;
+      margin-top: 80px;
+      display: block;
+      padding-right: 150px;
+    }
+  }
+
+  &--header {
+    color: white !important;
+  }
+}

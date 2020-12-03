@@ -1,0 +1,30 @@
+@import "../../../styles/colours.scss";
+.navigation-menu {
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  padding: 0 400px;
+  margin-bottom: 15px;
+
+  &__lists {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    padding: 20px 0;
+
+    &--nav {
+      &:hover {
+        color: $color-2;
+      }
+    }
+
+    &--dashboard {
+      margin-left: auto;
+      display: flex;
+      background: $color-1;
+      border-radius: 30px;
+      padding: 10px 15px;
+      color: white;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Divider, Image, Row, Typography } from "antd";
 import Image1 from "../../../logo.svg";
-import Technology from "./Technology/Technology";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -12,7 +11,6 @@ enum BEM {
 export default function Projects() {
   return (
     <Row gutter={[16, 16]} className="default home-projects">
-      <Title level={5}>Featured works</Title>
       <Col span={24}>
         <Row>
           <Col md={5}>
@@ -64,7 +62,6 @@ export default function Projects() {
           <Divider />
         </Row>
       </Col>
-      <Technology />
     </Row>
   );
 }
