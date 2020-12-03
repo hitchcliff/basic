@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Avatar,
-  Carousel,
-  Col,
-  Comment,
-  Divider,
-  Image,
-  Row,
-  Typography,
-} from "antd";
+import { Avatar, Col, Comment, Divider, Image, Row, Typography } from "antd";
 import { RecentCard } from "..";
 import {
   CalendarOutlined,
@@ -16,7 +7,7 @@ import {
   HeartOutlined,
 } from "@ant-design/icons";
 import { SingleTypes } from "./types";
-import Editor from "./Editor";
+import Comments from "./Comments";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -25,6 +16,7 @@ enum BEM {
   Related = "single-related",
   Image = "single-image",
   Meta = "single-meta",
+  Comments = "single-comments",
   Heading = "single__heading",
   Text = "single__text",
   Icon = "single--meta__icon",
@@ -35,11 +27,6 @@ interface SingleProps {
 }
 
 export default function Single({ data }: SingleProps) {
-  const [onFinish, setOnFinish] = useState({
-    message: "",
-    submitting: false,
-  });
-
   return (
     <Row className="default single" gutter={[16, 16]} justify="space-between">
       <Col style={{ display: "flex", flexDirection: "column" }} span={24}>
@@ -55,19 +42,7 @@ export default function Single({ data }: SingleProps) {
         <Divider />
         <Paragraph>{data.content}</Paragraph>
       </Col>
-
-      <Comment
-        avatar={
-          <Avatar
-            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            alt="Han Solo"
-          />
-        }
-        content={
-          <Editor onFinish={setOnFinish} submitting={onFinish.submitting} />
-        }
-      />
-
+      <Comments />
       <Col span={24}>
         <Title level={4}>Recent posts</Title>
         <Row className={BEM.Related}>

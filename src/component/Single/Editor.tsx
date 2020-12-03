@@ -1,14 +1,19 @@
 import { Button, Form, Input } from "antd";
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 const { TextArea } = Input;
 
 interface EditorProps {
   onFinish: (e: any) => void;
+  setValue: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   submitting: boolean;
 }
 
-export default function Editor({ onFinish, submitting }: EditorProps) {
+export default function Editor({
+  onFinish,
+  submitting,
+  setValue,
+}: EditorProps) {
   return (
     <Form
       onFinish={(e) => {
@@ -16,10 +21,10 @@ export default function Editor({ onFinish, submitting }: EditorProps) {
       }}
     >
       <Form.Item name="message">
-        <TextArea rows={4} />
+        <TextArea rows={4} onChange={setValue} />
       </Form.Item>
       <Form.Item>
-        <Button htmlType="submit" loading={submitting}>
+        <Button style={{ margin: "0" }} htmlType="submit" loading={submitting}>
           Submit comment
         </Button>
       </Form.Item>
