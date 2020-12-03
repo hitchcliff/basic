@@ -1,4 +1,9 @@
 .single {
+  &-image {
+    margin: 0 auto;
+    display: flex;
+  }
+
   &-meta {
     display: flex;
     flex-direction: column;

@@ -13,6 +13,7 @@ const { Title, Text, Paragraph } = Typography;
 enum BEM {
   Layout = "single",
   Related = "single-related",
+  Image = "single-image",
   Meta = "single-meta",
   Heading = "single__heading",
   Text = "single__text",
@@ -26,8 +27,8 @@ interface SingleProps {
 export default function Single({ data }: SingleProps) {
   return (
     <Row className="default single" gutter={[16, 16]} justify="space-between">
-      <Col>
-        <Image src={data.image} />
+      <Col style={{ display: "flex", flexDirection: "column" }}>
+        <Image className={BEM.Image} src={data.image} />
         <Row className={BEM.Meta}>
           <Title className={BEM.Heading}>{data.title}</Title>
           <Text className={BEM.Text}>
