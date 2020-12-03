@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Row, Typography } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
+import PostCard from "../../../component/PostCard/PostCard";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -12,6 +13,30 @@ enum BEM {
   Title = "home-news-card__title",
 }
 
+export const sampleData = [
+  {
+    title: "title",
+    content:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
+    link: "!#",
+    meta: "Feb. 6, 1998",
+  },
+  {
+    title: "title",
+    content:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
+    link: "!#",
+    meta: "Feb. 6, 1998",
+  },
+  {
+    title: "title",
+    content:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
+    link: "!#",
+    meta: "Feb. 6, 1998",
+  },
+];
+
 export default function News() {
   return (
     <Row className="default home-news">
@@ -20,64 +45,15 @@ export default function News() {
       </Title>
       <Row className={BEM.Posts}>
         <Col span={8}>
-          <Card
-            className={BEM.Card}
-            hoverable
-            title={
-              <Title level={4} className={BEM.Title}>
-                Title
-                <Col className={`${BEM.Title}-col`}>
-                  <HeartOutlined />
-                  <Button href="!#">View post</Button>
-                </Col>
-              </Title>
-            }
-          >
-            <Text>Feb. 6, 1998</Text>
-            <Paragraph>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto
-              deserunt error perferendis cum illo? Repellat laudantium ex minus
-              nemo quibusdam.
-            </Paragraph>
-          </Card>
+          <PostCard post={sampleData[0]} />
         </Col>
 
         <Col span={8}>
-          <Card
-            className="home-news-card"
-            hoverable
-            title={
-              <Title level={4} className="home-news-card__title">
-                Title<Button href="!#">View post</Button>
-              </Title>
-            }
-          >
-            <Text>Feb. 6, 1998</Text>
-            <Paragraph>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto
-              deserunt error perferendis cum illo? Repellat laudantium ex minus
-              nemo quibusdam.
-            </Paragraph>
-          </Card>
+          <PostCard post={sampleData[2]} />
         </Col>
 
         <Col span={8}>
-          <Card
-            className="home-news-card"
-            hoverable
-            title={
-              <Title level={4} className="home-news-card__title">
-                Title<Button href="!#">View post</Button>
-              </Title>
-            }
-          >
-            <Text>Feb. 6, 1998</Text>
-            <Paragraph>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto
-              deserunt error perferendis cum illo? Repellat laudantium ex minus
-              nemo quibusdam.
-            </Paragraph>
-          </Card>
+          <PostCard post={sampleData[1]} />
         </Col>
       </Row>
     </Row>

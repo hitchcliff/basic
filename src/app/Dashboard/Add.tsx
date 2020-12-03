@@ -1,16 +1,21 @@
 import { InboxOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Form, Input, Row, Typography, Upload } from "antd";
+import { Button, Card, Form, Input, Typography, Upload } from "antd";
 import React from "react";
 
 const { TextArea } = Input;
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 enum BEM {
   Form = "dashboard-add-post",
   Button = "dashboard-add-post__button",
 }
 
-export default function AddPost() {
+interface AppPostProps {
+  title: string;
+  handleClick: (e: any) => void;
+}
+
+export default function AddPost({ title, handleClick }: AppPostProps) {
   const normFile = (e: any) => {
     console.log("Upload event:", e);
     if (Array.isArray(e)) {
@@ -20,7 +25,7 @@ export default function AddPost() {
   };
 
   return (
-    <Card title="Add a post">
+    <Card title={title}>
       <Form className={BEM.Form}>
         <Form.Item required>
           <Text>Title</Text>
@@ -43,7 +48,9 @@ export default function AddPost() {
             Upload or Drag file here
           </Upload.Dragger>
           <Form.Item>
-            <Button className={BEM.Button}>Submit</Button>
+            <Button className={BEM.Button} onClick={handleClick}>
+              Submit
+            </Button>
           </Form.Item>
         </Form.Item>
       </Form>

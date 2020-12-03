@@ -10,14 +10,14 @@ enum BEM {
   Row = "dashboard-posts__row",
 }
 
-export default function Posts() {
+export default function Project() {
   function handleClick(e: any) {
     console.log(e);
   }
   return (
     <Row className={BEM.Layout} justify="start" align="top">
       <Col md={5} style={{ marginRight: "20px" }}>
-        <Add title="Add a post" handleClick={handleClick} />
+        <Add title="Add a project" handleClick={handleClick} />
       </Col>
       <Col md={16}>
         <Row className={BEM.Row}>

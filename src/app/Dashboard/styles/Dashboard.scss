@@ -10,6 +10,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background: white;
+
     &__heading {
       color: white !important;
       margin: 0 !important;
@@ -20,7 +22,7 @@
       align-items: center;
       background: none;
       border: none;
-      color: white;
+      color: $color-2;
     }
   }
 
@@ -32,7 +34,7 @@
   &-content {
     z-index: 1;
     height: 100%;
-    padding: 100px;
+    padding: 100px 300px;
   }
 }
 
@@ -48,5 +50,12 @@
     span {
       color: gray !important;
     }
+  }
+}
+
+// posts card
+.dashboard-posts {
+  &__card {
+    box-shadow: none !important;
   }
 }

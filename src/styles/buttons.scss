@@ -20,6 +20,25 @@ button {
 
 .update-button {
   padding: 5px 10px !important;
+  background: none !important;
+  span {
+    color: gray !important;
+  }
+}
+
+.logout-button {
+  background: $color-2;
+  color: white;
+  border-radius: 50px !important;
+}
+
+.goto-home-button {
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  span {
+    color: $color-2 !important;
+  }
 }
 
 .anticon-delete {

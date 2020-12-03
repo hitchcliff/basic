@@ -1,10 +1,9 @@
-import { Card, Layout, Menu, Row, Typography, Col, Button } from "antd";
-import React, { useState } from "react";
-import Comments from "./Comments";
+import { Layout, Menu, Button, Divider } from "antd";
+import React from "react";
 import Posts from "./Post";
+import Project from "./Project";
 
-const { Header, Content, Sider } = Layout;
-const { Title, Text, Paragraph } = Typography;
+const { Header, Content } = Layout;
 
 enum BEM {
   Layout = "dashboard",
@@ -19,22 +18,16 @@ export default function Dashboard() {
   return (
     <Layout className={BEM.Layout}>
       <Header className={BEM.Header}>
-        <Title className={BEM.Heading} level={3}>
-          Dashboard, welcome back Kevin!
-        </Title>
+        <Button className="goto-home-button">Go back to home</Button>
         <Menu className={BEM.Menu}>
-          <Menu.Item>Posts</Menu.Item>
-          <Menu.Item>Projects</Menu.Item>
+          <Menu.Item className="logout-button">Logout</Menu.Item>
         </Menu>
       </Header>
-      <Layout>
-        <Sider className={BEM.Sider} width={350}>
-          <Comments />
-        </Sider>
-        <Content className={BEM.Content}>
-          <Posts />
-        </Content>
-      </Layout>
+      <Content className={BEM.Content}>
+        <Posts />
+        <Divider />
+        <Project />
+      </Content>
     </Layout>
   );
 }
