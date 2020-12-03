@@ -1,0 +1,34 @@
+import { Card, Col, Image, Row, Typography } from "antd";
+import React from "react";
+
+const { Title, Paragraph } = Typography;
+
+enum BEM {
+  Layout = "recent-post",
+  Heading = "recent-post__heading",
+  Title = "recent-post-card__title",
+  Text = "recent-post-card__text",
+  Image = "recent-post-card__image",
+}
+
+interface RecentCardProps {
+  recent: { image: string; title: string; paragraph: string };
+}
+
+export default function RecentCard({ recent }: RecentCardProps) {
+  return (
+    <Card className={BEM.Layout}>
+      <Row>
+        <Col span={7}>
+          <Image className={BEM.Image} src={recent.image} />
+        </Col>
+        <Col span={17}>
+          <Title className={BEM.Title} level={4}>
+            {recent.title}
+          </Title>
+          <Paragraph>{recent.paragraph}</Paragraph>
+        </Col>
+      </Row>
+    </Card>
+  );
+}

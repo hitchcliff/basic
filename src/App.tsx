@@ -1,20 +1,19 @@
 import { Layout } from "antd";
 import React from "react";
 import "./App.scss";
-import Dashboard from "./app/Dashboard/Dashboard";
 import Footer from "./app/Footer/Footer";
-import { Home } from "./app/index";
-import Navigation from "./app/Navigation/Navigation";
+import { Home, Navigation, Single, Dashboard } from "./app/index";
 
 const { Content } = Layout;
 
 function App() {
   return (
     <>
-      {/* <Navigation /> */}
+      <Navigation />
+      <Single />
       {/* <Home /> */}
-      <Dashboard />
-      {/* <Footer /> */}
+      {/* <Dashboard /> */}
+      <Footer />
     </>
   );
 }

@@ -1,0 +1,34 @@
+.single {
+  &-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+      margin-left: auto;
+    }
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__heading {
+    margin: 20px 0 20px 0 !important;
+  }
+
+  &-card {
+    &__image {
+      border-radius: 50%;
+      width: 80px;
+    }
+  }
+
+  &-related {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
