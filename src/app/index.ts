@@ -6,3 +6,4 @@ export { default as Projects } from "./Projects/Projects";
 export { default as SinglePost } from "./SinglePost/SinglePost";
 export { default as SingleProject } from "./SingleProject/SingleProject";
 export { default as Footer } from "./Footer/Footer";
+export { default as NotFound } from "./NotFound/NotFound";
