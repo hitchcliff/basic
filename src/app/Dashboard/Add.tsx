@@ -47,11 +47,11 @@ export default function AddPost({ title, handleClick }: AppPostProps) {
             </p>
             Upload or Drag file here
           </Upload.Dragger>
-          <Form.Item>
-            <Button className={BEM.Button} onClick={handleClick}>
-              Submit
-            </Button>
-          </Form.Item>
+        </Form.Item>
+        <Form.Item>
+          <Button className={BEM.Button} onClick={handleClick}>
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </Card>

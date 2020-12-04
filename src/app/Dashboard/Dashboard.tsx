@@ -18,7 +18,12 @@ export default function Dashboard() {
   return (
     <Layout className={BEM.Layout}>
       <Header className={BEM.Header}>
-        <Button className="goto-home-button">Go back to home</Button>
+        <Button
+          className="goto-home-button"
+          onClick={() => (window.location.pathname = "/")}
+        >
+          Go back to home
+        </Button>
         <Menu className={BEM.Menu}>
           <Menu.Item className="logout-button">Logout</Menu.Item>
         </Menu>

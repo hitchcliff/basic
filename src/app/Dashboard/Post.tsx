@@ -1,8 +1,11 @@
 import { Button, Col, Row } from "antd";
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import PostCard from "../../component/PostCard/PostCard";
 import Add from "./Add";
+import { useDispatch } from "react-redux";
 import { sampleData } from "../Home/News/News";
+import { fetchAllPosts } from "../../features/Post/post.thunk";
+import useBlogService from "../Hooks/useBlogService";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -11,9 +14,17 @@ enum BEM {
 }
 
 export default function Posts() {
+  const dispatch = useDispatch();
+  const blogService = useBlogService();
+
+  useEffect(() => {
+    dispatch(fetchAllPosts);
+  }, [dispatch]);
+
   function handleClick(e: any) {
     console.log(e);
   }
+
   return (
     <Row className={BEM.Layout} justify="start" align="top">
       <Col md={5} style={{ marginRight: "20px" }}>

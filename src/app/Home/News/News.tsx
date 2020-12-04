@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Card, Col, Row, Typography } from "antd";
-import { HeartOutlined } from "@ant-design/icons";
+import { Col, Row, Typography } from "antd";
 import PostCard from "../../../component/PostCard/PostCard";
+import { PostTypes } from "../../../component/PostCard/types";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -13,30 +13,42 @@ enum BEM {
   Title = "home-news-card__title",
 }
 
-export const sampleData = [
+export const sampleData: PostTypes[] = [
   {
+    id: "1",
     title: "title",
     content:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-    link: "!#",
-    meta: "Feb. 6, 1998",
+    createdAt: "Feb. 6, 1998",
     image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
+    user: {
+      name: "Kevin Nacario",
+      uid: "1231231",
+    },
   },
   {
+    id: "2",
     title: "title",
     content:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-    link: "!#",
-    meta: "Feb. 6, 1998",
+    createdAt: "Feb. 6, 1998",
     image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
+    user: {
+      name: "Kevin Nacario",
+      uid: "1231231",
+    },
   },
   {
+    id: "3",
     title: "title",
     content:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-    link: "!#",
-    meta: "Feb. 6, 1998",
+    createdAt: "Feb. 6, 1998",
     image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
+    user: {
+      name: "Kevin Nacario",
+      uid: "1231231",
+    },
   },
 ];
 

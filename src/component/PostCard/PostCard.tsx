@@ -27,14 +27,15 @@ export default function PostCard({ post, children, showImage }: PostCardProps) {
           {post.title}
           <Col className={BEM.Col}>
             <HeartOutlined />
-            <Button href={post.link}>View post</Button>
+            <Button href="!#">View post</Button>
           </Col>
         </Title>
       }
     >
       {showImage && <Image src={post.image} alt={post.title} />}
+
       <Text>
-        <CalendarOutlined /> {post.meta}
+        <CalendarOutlined /> {post.createdAt}
       </Text>
       <Paragraph>{post.content}</Paragraph>
       {children}
