@@ -1,6 +1,7 @@
-import { HeartOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Typography } from "antd";
+import { CalendarOutlined, HeartOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Image, Typography } from "antd";
 import React from "react";
+import { PostTypes } from "./types";
 
 const { Text, Paragraph, Title } = Typography;
 
@@ -11,14 +12,15 @@ enum BEM {
 }
 
 interface PostCardProps {
-  post: { title: string; link: string; meta: string; content: string };
+  post: PostTypes;
   children?: any;
+  showImage?: boolean;
 }
 
-export default function PostCard({ post, children }: PostCardProps) {
+export default function PostCard({ post, children, showImage }: PostCardProps) {
   return (
     <Card
-      className={BEM.Card}
+      className={showImage ? "post-card post-card--hasImage " : BEM.Card}
       hoverable
       title={
         <Title level={4} className={BEM.Title}>
@@ -30,7 +32,10 @@ export default function PostCard({ post, children }: PostCardProps) {
         </Title>
       }
     >
-      <Text>{post.meta}</Text>
+      {showImage && <Image src={post.image} alt={post.title} />}
+      <Text>
+        <CalendarOutlined /> {post.meta}
+      </Text>
       <Paragraph>{post.content}</Paragraph>
       {children}
     </Card>

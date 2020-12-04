@@ -1,13 +1,15 @@
 import { Layout } from "antd";
 import React from "react";
 import "./App.scss";
-import Footer from "./app/Footer/Footer";
 import {
-  Home,
   Navigation,
+  Home,
   SinglePost,
   SingleProject,
   Dashboard,
+  Blog,
+  Projects,
+  Footer,
 } from "./app/index";
 
 const { Content } = Layout;
@@ -16,8 +18,10 @@ function App() {
   return (
     <>
       <Navigation />
+      <Projects />
+      {/* <Blog /> */}
       {/* <SinglePost /> */}
-      <SingleProject />
+      {/* <SingleProject /> */}
       {/* <Home /> */}
       {/* <Dashboard /> */}
       <Footer />

@@ -1,0 +1,39 @@
+.collection {
+  &-content {
+    &--header {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+    &--cards {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+  }
+
+  &-search {
+    button {
+      margin-top: 0 !important;
+      padding: 5px 10px !important;
+    }
+  }
+
+  &-col {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .post-card--hasImage {
+    .ant-card-body {
+      padding: 0 !important;
+      .ant-typography {
+        padding: 0 24px !important;
+      }
+    }
+    .ant-image {
+      margin-bottom: 10px;
+    }
+  }
+}

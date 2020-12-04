@@ -20,6 +20,7 @@ export const sampleData = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
     link: "!#",
     meta: "Feb. 6, 1998",
+    image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
   },
   {
     title: "title",
@@ -27,6 +28,7 @@ export const sampleData = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
     link: "!#",
     meta: "Feb. 6, 1998",
+    image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
   },
   {
     title: "title",
@@ -34,6 +36,7 @@ export const sampleData = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
     link: "!#",
     meta: "Feb. 6, 1998",
+    image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
   },
 ];
 
