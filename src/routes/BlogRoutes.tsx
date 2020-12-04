@@ -8,7 +8,7 @@ export default function BlogRoutes() {
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
-        <Route path={Direction.Blog} component={Blog} />
+        <Route exact path={Direction.Blog} component={Blog} />
         <Route path={Direction.Blog + "/:postid"} component={SinglePost} />
       </Switch>
     </Suspense>

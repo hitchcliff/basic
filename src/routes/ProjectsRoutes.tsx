@@ -7,7 +7,7 @@ import { Projects, SingleProject } from "../app/index";
 export default function ProjectsRoutes() {
   return (
     <Suspense fallback={<Loading />}>
-      <Route path={Direction.Projects} component={Projects} />
+      <Route exact path={Direction.Projects} component={Projects} />
       <Route
         path={Direction.Projects + "/:projectid"}
         component={SingleProject}
