@@ -6,21 +6,28 @@ import { Direction } from "./App.types";
 import Loading from "./component/Loading/Loading";
 import BlogRoutes from "./routes/BlogRoutes";
 import ProjectsRoutes from "./routes/ProjectsRoutes";
+import DashboardRoute from "./routes/Dashboard.route";
+import AppRoutes from "./routes/App.route";
 
 function App() {
   return (
     <>
       <Suspense fallback={<Loading />}>
         <Router>
-          <Navigation />
           <Switch>
-            <Route exact path={Direction.Home} component={Home} />
-            <Route path={Direction.Projects} component={ProjectsRoutes} />
-            <Route path={Direction.Blog} component={BlogRoutes} />
-            <Route path={Direction.Dashboard} component={Dashboard} />
-            <Route component={NotFound} />
+            <Route
+              exact
+              path={[
+                Direction.Home,
+                "/home",
+                Direction.Blog,
+                Direction.Projects,
+                Direction,
+              ]}
+              component={AppRoutes}
+            />
+            <Route path={Direction.Dashboard} component={DashboardRoute} />
           </Switch>
-          <Footer />
         </Router>
       </Suspense>
     </>
