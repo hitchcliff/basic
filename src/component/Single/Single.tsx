@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { SingleTypes } from "./types";
 import Comments from "./Comments";
+import CommentsList from "./CommentsList";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -42,7 +43,7 @@ export default function Single({ data }: SingleProps) {
         <Divider />
         <Paragraph>{data.content}</Paragraph>
       </Col>
-      <Comments />
+      <Comments>Yeep</Comments>
       <Col span={24}>
         <Title level={4}>Recent posts</Title>
         <Row className={BEM.Related}>

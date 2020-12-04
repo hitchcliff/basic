@@ -5,7 +5,7 @@ const { TextArea } = Input;
 
 interface EditorProps {
   onFinish: (e: any) => void;
-  setValue: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  setValue: (e: string) => void;
   submitting: boolean;
 }
 
@@ -21,7 +21,7 @@ export default function Editor({
       }}
     >
       <Form.Item name="message">
-        <TextArea rows={4} onChange={setValue} />
+        <TextArea rows={4} onChange={(e) => setValue(e.currentTarget.value)} />
       </Form.Item>
       <Form.Item>
         <Button style={{ margin: "0" }} htmlType="submit" loading={submitting}>

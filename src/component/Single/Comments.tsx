@@ -1,6 +1,8 @@
 import { Avatar, Col, Comment, List, Row, Typography } from "antd";
 import React, { ChangeEvent, useState } from "react";
+import CommentsList from "./CommentsList";
 import Editor from "./Editor";
+import { CommentTypes } from "./types";
 
 const { Title } = Typography;
 
@@ -8,10 +10,14 @@ enum BEM {
   Comments = "single-comments",
 }
 
-export default function Comments() {
-  const [value, setValue] = useState<ChangeEvent<HTMLTextAreaElement>>();
-  const [onFinish, setOnFinish] = useState({
-    message: "",
+interface CommentsProp {
+  children?: any;
+}
+
+export default function Comments({ children }: CommentsProp) {
+  const [value, setValue] = useState<string>("hello world");
+  const [onFinish, setOnFinish] = useState<CommentTypes>({
+    message: "Hello test comment",
     submitting: false,
     comments: [
       {
@@ -19,14 +25,13 @@ export default function Comments() {
         avatar:
           "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
         content: <p>{value}</p>,
-        datetime: Date.now().toLocaleString(),
+        datetime: Date.now(),
       },
     ],
   });
 
-  console.log(value);
   return (
-    <Col span={24}>
+    <Col span={24} style={{ margin: "80px 0" }}>
       <Title level={4}>Post a comment</Title>
       <Comment
         className={BEM.Comments}
@@ -43,12 +48,17 @@ export default function Comments() {
             setValue={setValue}
           />
         }
-      />
-      {/* <List
-        dataSource={state}
-        renderItem={(props) => <Comment {...props} />}
-        itemLayout="horizontal"
-      /> */}
+      >
+        {children}
+      </Comment>
+
+      {onFinish.comments.length && (
+        <List
+          dataSource={onFinish.comments}
+          renderItem={(props) => <CommentsList comments={props} />}
+          itemLayout="horizontal"
+        />
+      )}
     </Col>
   );
 }
