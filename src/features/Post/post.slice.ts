@@ -1,10 +1,10 @@
 import {
+  createAsyncThunk,
   createEntityAdapter,
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { PostTypes } from "../../component/PostCard/types";
-import { fetchAllPosts } from "./post.thunk";
 
 export const postAdapter = createEntityAdapter<PostTypes>({
   selectId: (item) => item.id,
@@ -23,10 +23,10 @@ export const postSlice = createSlice({
     addPost: (state, { payload }: PayloadAction<PostTypes>) => {
       postAdapter.addOne(state.posts, payload);
     },
+    addPosts: (state, { payload }: PayloadAction<PostTypes[]>) => {
+      postAdapter.addMany(state.posts, payload);
+    },
   },
-  extraReducers: {},
 });
 
-console.log(fetchAllPosts());
-
-export const { addPost } = postSlice.actions;
+export const { addPost, addPosts } = postSlice.actions;

@@ -3,6 +3,6 @@ export interface PostTypes {
   title: string;
   content: string;
   createdAt: Date | string | number;
-  image: string;
+  image: any;
   user: { name: string; uid: string };
 }

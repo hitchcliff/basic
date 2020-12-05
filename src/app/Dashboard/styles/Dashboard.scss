@@ -55,7 +55,22 @@
 
 // posts card
 .dashboard-posts {
-  &__card {
-    box-shadow: none !important;
+  flex-wrap: nowrap;
+  // masonry
+  &__content {
+    column-count: 3;
+    gap: 10px;
+
+    &-card {
+      width: 100%;
+      box-shadow: none !important;
+      position: relative;
+      display: block;
+      line-height: 1.3;
+      break-inside: avoid-column;
+      margin-bottom: 10px;
+    }
   }
 }
+//media query
+@import "./Media.scss";

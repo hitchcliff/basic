@@ -1,44 +1,47 @@
 import { Button, Col, Row } from "antd";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import PostCard from "../../component/PostCard/PostCard";
 import Add from "./Add";
-import { useDispatch } from "react-redux";
-import { sampleData } from "../Home/News/News";
-import { fetchAllPosts } from "../../features/Post/post.thunk";
+import { useSelector } from "react-redux";
 import useBlogService from "../Hooks/useBlogService";
+import { postSelectAllSelector } from "../../features/Post/post.selector";
+import { PostTypes } from "../../component/PostCard/types";
 
 enum BEM {
   Layout = "dashboard-posts",
-  Content = "dashboard-posts__card",
-  Row = "dashboard-posts__row",
+  Form = "dashboard-posts__form",
+  Content = "dashboard-posts__content",
+  Cards = "dashboard-posts__content-card",
 }
 
 export default function Posts() {
-  const dispatch = useDispatch();
   const blogService = useBlogService();
+  const posts = useSelector(postSelectAllSelector);
 
   useEffect(() => {
-    dispatch(fetchAllPosts);
-  }, [dispatch]);
+    blogService.fetchPosts();
+  }, []);
 
-  function handleClick(e: any) {
-    console.log(e);
+  function handleClick(post: PostTypes) {
+    blogService.addPost(post);
   }
 
   return (
-    <Row className={BEM.Layout} justify="start" align="top">
-      <Col md={5} style={{ marginRight: "20px" }}>
+    <Row className={BEM.Layout} align="top" justify="space-between">
+      <Col md={8} className={BEM.Form} style={{ marginRight: "10px" }}>
         <Add title="Add a post" handleClick={handleClick} />
       </Col>
-      <Col md={16}>
-        <Row className={BEM.Row}>
-          <Col md={8} className={BEM.Content}>
-            <PostCard post={sampleData[0]}>
-              <Button className="delete-button">Delete</Button>
-              <Button className="update-button">Update</Button>
-            </PostCard>
-          </Col>
-        </Row>
+      <Col md={16} className={BEM.Content}>
+        {posts.map((post) => {
+          return (
+            <Row key={post.id} className={BEM.Cards}>
+              <PostCard post={post}>
+                <Button className="delete-button">Delete</Button>
+                <Button className="update-button">Update</Button>
+              </PostCard>
+            </Row>
+          );
+        })}
       </Col>
     </Row>
   );
