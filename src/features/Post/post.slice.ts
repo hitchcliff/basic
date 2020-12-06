@@ -26,6 +26,12 @@ export const postSlice = createSlice({
     removePost: (state, { payload }: PayloadAction<string>) => {
       postAdapter.removeOne(state.posts, payload);
     },
+    updatePost: (state, { payload }: PayloadAction<PostTypes>) => {
+      postAdapter.updateOne(state.posts, {
+        id: payload.id,
+        changes: payload,
+      });
+    },
   },
   extraReducers: {
     [fetchAllPosts.fulfilled.toString()]: (state, payload) => {
@@ -41,4 +47,4 @@ export const postSlice = createSlice({
   },
 });
 
-export const { addPost, removePost } = postSlice.actions;
+export const { addPost, removePost, updatePost } = postSlice.actions;

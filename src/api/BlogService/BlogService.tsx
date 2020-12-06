@@ -3,7 +3,7 @@ import Store from "../../Store";
 import AddPosts from "./AddPost";
 import FetchPosts from "./FetchPosts";
 import DestroyPost from "./DestroyPost";
-import EditPost from "./EditPost";
+import UpdatePost from "./UpdatePost";
 
 export default class BlogService {
   fetchPosts() {
@@ -14,8 +14,8 @@ export default class BlogService {
     return AddPosts(post, Store.dispatch);
   }
 
-  editPost(post: PostTypes) {
-    return EditPost(post);
+  editPost(post: PostTypes | {}, id: string) {
+    return UpdatePost(post, id, Store.dispatch);
   }
 
   destroyPost(id: string) {

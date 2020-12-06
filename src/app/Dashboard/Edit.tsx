@@ -5,6 +5,7 @@ import { ImageUpload } from "../../component";
 import { PostTypes } from "../../component/PostCard/types";
 import { postSelector } from "../../features/Post/post.selector";
 import { RootState } from "../../Store";
+import useBlogService from "../Hooks/useBlogService";
 
 const { Text } = Typography;
 
@@ -18,6 +19,7 @@ interface EditProps {
 }
 
 export default function Edit({ handleClick, postid }: EditProps) {
+  const { editPost } = useBlogService();
   const [upload, setUpload] = useState<boolean>(false);
   const fetchPostById: PostTypes | undefined = useSelector((state: RootState) =>
     postSelector.selectById(state, postid)
@@ -34,7 +36,10 @@ export default function Edit({ handleClick, postid }: EditProps) {
     });
   }
 
-  console.log(updatePost);
+  function handleSave() {
+    editPost(updatePost, postid);
+    handleClick(false);
+  }
 
   return (
     <Form className={BEM.Form} layout="horizontal">
@@ -65,7 +70,11 @@ export default function Edit({ handleClick, postid }: EditProps) {
         )}
       </Form.Item>
       <Form.Item>
-        <Button className="update-button" style={{ marginRight: "10px" }}>
+        <Button
+          className="update-button"
+          style={{ marginRight: "10px" }}
+          onClick={handleSave}
+        >
           Save
         </Button>
         <Button className="delete-button" onClick={() => handleClick(false)}>
