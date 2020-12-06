@@ -1,4 +1,4 @@
-import { CalendarOutlined, HeartOutlined } from "@ant-design/icons";
+import { CalendarOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Image, Typography } from "antd";
 import React from "react";
 import { PostTypes } from "./types";
@@ -26,7 +26,6 @@ export default function PostCard({ post, children, showImage }: PostCardProps) {
         <Title level={4} className={BEM.Title}>
           {post.title}
           <Col className={BEM.Col}>
-            <HeartOutlined />
             <Button href="!#">View post</Button>
           </Col>
         </Title>

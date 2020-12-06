@@ -24,6 +24,18 @@
       border: none;
       color: $color-2;
     }
+
+    .ant-tabs-nav {
+      &::before {
+        display: none !important;
+      }
+
+      .ant-tabs-tab-active {
+        .ant-tabs-tab-btn {
+          color: $color-1;
+        }
+      }
+    }
   }
 
   &-sider {

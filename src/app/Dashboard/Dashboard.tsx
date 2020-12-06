@@ -1,7 +1,10 @@
+import React, { Suspense, useEffect, useState } from "react";
 import { Layout, Menu, Tabs } from "antd";
-import React, { useEffect, useState } from "react";
+import { useRouteMatch, useHistory } from "react-router-dom";
+import Loading from "../../component/Loading/Loading";
 import Posts from "./Post";
 import Project from "./Project";
+import { Direction } from "../../App.types";
 
 const { Header, Content } = Layout;
 
@@ -21,15 +24,24 @@ enum MenuTab {
 
 export default function Dashboard() {
   const [activeKey, setActiveKey] = useState<string>(MenuTab.Posts);
+  const match = useRouteMatch(Direction.Dashboard + "/:page");
+  const history = useHistory();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setActiveKey(match?.params.page);
+  }, [match]);
+
+  function changeTab(nextActiveKey: string) {
+    setActiveKey(nextActiveKey);
+    history.push(`${Direction.Dashboard}/${nextActiveKey}`);
+  }
 
   return (
     <Layout className={BEM.Layout}>
       <Header className={BEM.Header}>
-        <Tabs defaultActiveKey={activeKey} onChange={setActiveKey}>
-          <Tabs.TabPane tab="Posts" key="posts" />
-          <Tabs.TabPane tab="Projects" key="projects" />
+        <Tabs activeKey={activeKey} onChange={changeTab}>
+          <Tabs.TabPane tab="Posts" key={MenuTab.Posts} />
+          <Tabs.TabPane tab="Projects" key={MenuTab.Projects} />
         </Tabs>
         <Menu className={BEM.Menu}>
           <Menu.Item
@@ -41,10 +53,12 @@ export default function Dashboard() {
           <Menu.Item className="logout-button">Logout</Menu.Item>
         </Menu>
       </Header>
-      <Content className={BEM.Content}>
-        {activeKey === MenuTab.Posts && <Posts />}
-        {activeKey === MenuTab.Projects && <Project />}
-      </Content>
+      <Suspense fallback={<Loading />}>
+        <Content className={BEM.Content}>
+          {activeKey === MenuTab.Posts && <Posts />}
+          {activeKey === MenuTab.Projects && <Project />}
+        </Content>
+      </Suspense>
     </Layout>
   );
 }
