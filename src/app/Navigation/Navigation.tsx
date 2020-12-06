@@ -12,11 +12,7 @@ export default function Navigation() {
   const history = useHistory();
 
   useEffect(() => {
-    if (current === "dashboard") {
-      window.location.pathname = "/dashboard";
-    } else {
-      history.push(`/${current}`);
-    }
+    history.push(`/${current}`);
   }, [current, history]);
 
   return (
@@ -35,7 +31,7 @@ export default function Navigation() {
         <Menu.Item className={`${BEM.List}--nav`} key="projects">
           Projects
         </Menu.Item>
-        <Menu.Item className={`${BEM.List}--dashboard`} key="dashboard">
+        <Menu.Item className={`${BEM.List}--dashboard`} key="auth">
           Dashboard
         </Menu.Item>
       </Menu>

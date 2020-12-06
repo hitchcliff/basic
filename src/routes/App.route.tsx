@@ -4,7 +4,7 @@ import Loading from "../component/Loading/Loading";
 import { Direction } from "../App.types";
 import ProjectsRoutes from "./ProjectsRoutes";
 import BlogRoutes from "./BlogRoutes";
-import { NotFound, Navigation, Home, Footer } from "../app/index";
+import { NotFound, Navigation, Home, Footer, Auth } from "../app/index";
 
 export default function AppRoutes() {
   return (
@@ -13,6 +13,7 @@ export default function AppRoutes() {
         <Navigation />
         <Switch>
           <Route exact path={[Direction.Home, "/home"]} component={Home} />
+          <Route path={Direction.Auth} component={Auth} />
           <Route path={Direction.Projects} component={ProjectsRoutes} />
           <Route path={Direction.Blog} component={BlogRoutes} />
           <Route component={NotFound} />

@@ -7,3 +7,4 @@ export { default as SinglePost } from "./SinglePost/SinglePost";
 export { default as SingleProject } from "./SingleProject/SingleProject";
 export { default as Footer } from "./Footer/Footer";
 export { default as NotFound } from "./NotFound/NotFound";
+export { default as Auth } from "./Auth/Auth";
