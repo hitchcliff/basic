@@ -5,6 +5,7 @@ import Loading from "../../component/Loading/Loading";
 import Posts from "./Post";
 import Project from "./Project";
 import { Direction } from "../../App.types";
+import { auth } from "../../firebase";
 
 const { Header, Content } = Layout;
 
@@ -28,12 +29,19 @@ export default function Dashboard() {
   const history = useHistory();
 
   useEffect(() => {
-    setActiveKey(match?.params.page);
+    if (match?.params.page) {
+      setActiveKey(match?.params.page);
+    }
   }, [match]);
 
   function changeTab(nextActiveKey: string) {
     setActiveKey(nextActiveKey);
     history.push(`${Direction.Dashboard}/${nextActiveKey}`);
+  }
+
+  function handleSignOut() {
+    auth.signOut();
+    window.location.pathname = "/";
   }
 
   return (
@@ -50,7 +58,9 @@ export default function Dashboard() {
           >
             Go back to home
           </Menu.Item>
-          <Menu.Item className="logout-button">Logout</Menu.Item>
+          <Menu.Item className="logout-button" onClick={handleSignOut}>
+            Logout
+          </Menu.Item>
         </Menu>
       </Header>
       <Suspense fallback={<Loading />}>

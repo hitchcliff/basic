@@ -10,16 +10,23 @@ export default function Auth() {
   async function handleSubmit(values: { email: string; password: string }) {
     try {
       await auth.signInWithEmailAndPassword(values.email, values.password);
-      message.success("Welcome admin!");
-      window.location.pathname = "/dashboard/posts";
+      message.success("Welcome back admin!");
+
+      setTimeout(() => {
+        window.location.pathname = "/dashboard/posts";
+      }, 1000);
     } catch (error) {
       message.error("Invalid Credentials");
     }
   }
 
-  function handleGuest() {
+  async function handleGuest() {
+    await auth.signInWithEmailAndPassword("guest@email.com", "123456");
     message.warning("Welcome guest!");
-    return (window.location.pathname = "/dashboard/posts");
+
+    setTimeout(() => {
+      return (window.location.pathname = "/dashboard/posts");
+    }, 1000);
   }
 
   return (
