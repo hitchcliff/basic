@@ -14,8 +14,6 @@ export default async function UpdatePost(
 
     // check if there is new uploaded image
     if (typeof edittedPost.image !== "string") {
-      console.log("not string");
-
       const image = await storage
         .ref()
         .child("post images")
@@ -30,8 +28,6 @@ export default async function UpdatePost(
         image: imageURL,
       };
     } else {
-      console.log("string");
-
       newPost = {
         ...edittedPost,
       } as PostTypes;

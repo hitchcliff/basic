@@ -5,6 +5,7 @@ import { Direction } from "../App.types";
 import { Dashboard } from "../app/index";
 import Posts from "../app/Dashboard/Post";
 import Project from "../app/Dashboard/Project";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function DashboardRoute() {
   return (

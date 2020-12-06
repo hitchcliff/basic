@@ -5,7 +5,7 @@ import Loading from "../../component/Loading/Loading";
 import Posts from "./Post";
 import Project from "./Project";
 import { Direction } from "../../App.types";
-import { auth } from "../../firebase";
+import useUserService from "../Hooks/useUserService";
 
 const { Header, Content } = Layout;
 
@@ -27,6 +27,7 @@ export default function Dashboard() {
   const [activeKey, setActiveKey] = useState<string>(MenuTab.Posts);
   const match = useRouteMatch(Direction.Dashboard + "/:page");
   const history = useHistory();
+  const userService = useUserService();
 
   useEffect(() => {
     if (match?.params.page) {
@@ -40,8 +41,7 @@ export default function Dashboard() {
   }
 
   function handleSignOut() {
-    auth.signOut();
-    window.location.pathname = "/";
+    userService.signOutUser();
   }
 
   return (

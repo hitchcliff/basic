@@ -1,32 +1,22 @@
 import React from "react";
 import { Button, Form, Input, Layout, message, Typography } from "antd";
 import { auth } from "../../firebase";
+import { useDispatch } from "react-redux";
+import userUserService from "../Hooks/useUserService";
 
 enum BEM {
   Form = "auth__form",
 }
 
 export default function Auth() {
-  async function handleSubmit(values: { email: string; password: string }) {
-    try {
-      await auth.signInWithEmailAndPassword(values.email, values.password);
-      message.success("Welcome back admin!");
+  const { signInUser, signInGuess } = userUserService();
 
-      setTimeout(() => {
-        window.location.pathname = "/dashboard/posts";
-      }, 1000);
-    } catch (error) {
-      message.error("Invalid Credentials");
-    }
+  function handleSubmit(values: { email: string; password: string }) {
+    signInUser(values.email, values.password);
   }
 
-  async function handleGuest() {
-    await auth.signInWithEmailAndPassword("guest@email.com", "123456");
-    message.warning("Welcome guest!");
-
-    setTimeout(() => {
-      return (window.location.pathname = "/dashboard/posts");
-    }, 1000);
+  function handleGuest() {
+    signInGuess();
   }
 
   return (

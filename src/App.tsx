@@ -12,8 +12,8 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Router>
           <Switch>
+            <Route exact path="/" component={AppRoutes} />
             <Route path={Direction.Dashboard} component={DashboardRoute} />
-            <Route exact path="*" component={AppRoutes} />
           </Switch>
         </Router>
       </Suspense>
