@@ -3,7 +3,6 @@ import { Layout } from "antd";
 import Showcase from "./Showcase/Showcase";
 import News from "./News/News";
 import Projects from "./Projects/Projects";
-import Technology from "./Technology/Technology";
 import Expectation from "./Expectation/Expectation";
 
 enum BEM {

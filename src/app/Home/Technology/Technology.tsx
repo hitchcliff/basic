@@ -1,11 +1,9 @@
 import React from "react";
-import { Card, Col, Image, Row, Typography } from "antd";
+import { Col, Image, Row } from "antd";
 import react from "../../../assets/react.png";
 import redux from "../../../assets/redux.png";
 import ts from "../../../assets/ts.png";
 import jest from "../../../assets/jest.png";
-
-const { Title } = Typography;
 
 enum BEM {
   Images = "home-technology-images",

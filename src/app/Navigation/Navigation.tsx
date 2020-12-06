@@ -1,4 +1,4 @@
-import { Layout, Menu, Row } from "antd";
+import { Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export default function Navigation() {
     } else {
       history.push(`/${current}`);
     }
-  }, [current]);
+  }, [current, history]);
 
   return (
     <Layout className={BEM.Menu}>

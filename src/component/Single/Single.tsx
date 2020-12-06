@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Avatar, Col, Comment, Divider, Image, Row, Typography } from "antd";
+import React from "react";
+import { Col, Divider, Image, Row, Typography } from "antd";
 import { RecentCard } from "..";
 import {
   CalendarOutlined,
@@ -8,7 +8,6 @@ import {
 } from "@ant-design/icons";
 import { SingleTypes } from "./types";
 import Comments from "./Comments";
-import CommentsList from "./CommentsList";
 
 const { Title, Text, Paragraph } = Typography;
 

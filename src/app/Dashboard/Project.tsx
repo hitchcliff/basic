@@ -27,7 +27,7 @@ export default function Project() {
 
   useEffect(() => {
     dispatch(fetchAllProjects());
-  }, []);
+  }, [dispatch]);
 
   function handleClick(project: ProjectTypes) {
     addProject(project);

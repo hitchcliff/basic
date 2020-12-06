@@ -6,7 +6,7 @@ interface ImageUploadProp {
 
 export default function Upload({ handleChange }: ImageUploadProp) {
   const [file, setFile] = useState<string>("");
-  const [imagePreviewUrl, setImagePreviewUrl] = useState<any | ArrayBuffer>("");
+  // const [imagePreviewUrl, setImagePreviewUrl] = useState<any | ArrayBuffer>("");
 
   useEffect(() => {
     handleChange(file);
@@ -20,7 +20,7 @@ export default function Upload({ handleChange }: ImageUploadProp) {
 
     reader.onloadend = () => {
       setFile(file);
-      setImagePreviewUrl(reader.result);
+      // setImagePreviewUrl(reader.result);
     };
 
     reader.readAsDataURL(file);

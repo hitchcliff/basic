@@ -1,5 +1,5 @@
-import { Avatar, Col, Comment, List, Row, Typography } from "antd";
-import React, { ChangeEvent, useState } from "react";
+import { Avatar, Col, Comment, List, Typography } from "antd";
+import React, { useState } from "react";
 import CommentsList from "./CommentsList";
 import Editor from "./Editor";
 import { CommentTypes } from "./types";

@@ -26,7 +26,7 @@ export default function Posts() {
 
   useEffect(() => {
     dispatch(fetchAllPosts());
-  }, []);
+  }, [dispatch]);
 
   function handleClick(post: PostTypes) {
     addPost(post);
