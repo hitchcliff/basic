@@ -1,5 +1,4 @@
-import { InboxOutlined } from "@ant-design/icons";
-import { Button, Card, Form, Input, Typography, Upload } from "antd";
+import { Button, Card, Form, Input, Typography } from "antd";
 import React, { useState } from "react";
 import { ImageUpload } from "../../component";
 import { PostTypes } from "../../component/PostCard/types";
@@ -22,7 +21,7 @@ const defaultPost = {
   title: "title",
   content:
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-  createdAt: "Feb. 6, 1998",
+  createdAt: new Date().toDateString(),
   image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
   user: {
     name: "Kevin Nacario",

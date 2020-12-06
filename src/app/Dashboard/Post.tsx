@@ -2,10 +2,11 @@ import { Button, Col, Row } from "antd";
 import React, { useEffect } from "react";
 import PostCard from "../../component/PostCard/PostCard";
 import Add from "./Add";
-import { useSelector } from "react-redux";
 import useBlogService from "../Hooks/useBlogService";
 import { postSelectAllSelector } from "../../features/Post/post.selector";
 import { PostTypes } from "../../component/PostCard/types";
+import { fetchAllPosts } from "../../features/Post/post.thunk";
+import { useDispatch, useSelector } from "react-redux";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -15,15 +16,16 @@ enum BEM {
 }
 
 export default function Posts() {
-  const blogService = useBlogService();
-  const posts = useSelector(postSelectAllSelector);
+  const { addPost, destroyPost } = useBlogService();
+  const posts: PostTypes[] = useSelector(postSelectAllSelector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    blogService.fetchPosts();
+    dispatch(fetchAllPosts());
   }, []);
 
   function handleClick(post: PostTypes) {
-    blogService.addPost(post);
+    addPost(post);
   }
 
   return (
@@ -32,11 +34,16 @@ export default function Posts() {
         <Add title="Add a post" handleClick={handleClick} />
       </Col>
       <Col md={16} className={BEM.Content}>
-        {posts.map((post) => {
+        {posts.map((post: PostTypes) => {
           return (
             <Row key={post.id} className={BEM.Cards}>
               <PostCard post={post}>
-                <Button className="delete-button">Delete</Button>
+                <Button
+                  className="delete-button"
+                  onClick={() => destroyPost(post.id)}
+                >
+                  Delete
+                </Button>
                 <Button className="update-button">Update</Button>
               </PostCard>
             </Row>

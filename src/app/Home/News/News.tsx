@@ -3,7 +3,7 @@ import { Col, Row, Typography } from "antd";
 import PostCard from "../../../component/PostCard/PostCard";
 import { PostTypes } from "../../../component/PostCard/types";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title } = Typography;
 
 enum BEM {
   Layout = "home-news",
