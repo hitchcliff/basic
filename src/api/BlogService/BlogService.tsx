@@ -1,23 +1,21 @@
 import { PostTypes } from "../../component/PostCard/types";
+import Store from "../../Store";
 import AddPosts from "./AddPost";
 import FetchPosts from "./FetchPosts";
 import DestroyPost from "./DestroyPost";
-import { Dispatch } from "@reduxjs/toolkit";
-import Store from "../../Store";
+import EditPost from "./EditPost";
 
 export default class BlogService {
-  private dispatch: Dispatch;
-
-  constructor() {
-    this.dispatch = Store.dispatch;
-  }
-
   fetchPosts() {
     return FetchPosts();
   }
 
-  addPost(posts: PostTypes) {
-    return AddPosts(posts, this.dispatch);
+  addPost(post: PostTypes) {
+    return AddPosts(post, Store.dispatch);
+  }
+
+  editPost(post: PostTypes) {
+    return EditPost(post);
   }
 
   destroyPost(id: string) {

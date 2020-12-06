@@ -40,7 +40,7 @@ export default function AddPost({ title, handleClick }: AppPostProps) {
         <Form.Item required>
           <Text>Title</Text>
           <Input
-            onChange={(e) =>
+            onChange={(e: any) =>
               setNewPost({
                 ...newPost,
                 title: e.currentTarget.value,
@@ -51,7 +51,7 @@ export default function AddPost({ title, handleClick }: AppPostProps) {
         <Form.Item required>
           <Text>Content</Text>
           <TextArea
-            onChange={(e) =>
+            onChange={(e: any) =>
               setNewPost({
                 ...newPost,
                 content: e.currentTarget.value,
