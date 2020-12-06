@@ -1,3 +1,16 @@
+@import "../../../styles/colours.scss";
 .auth {
   background: white;
+  display: flex;
+  &__form {
+    margin: 0 auto;
+    width: 300px;
+    &-button {
+      padding: 5px 30px;
+      background: $color-2;
+      span {
+        color: white !important;
+      }
+    }
+  }
 }

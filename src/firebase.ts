@@ -2,6 +2,7 @@
 
 import firebase from "firebase";
 import "firebase/storage";
+import "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
@@ -20,6 +21,9 @@ firebase.analytics();
 
 export const firestore = firebase.firestore();
 export const storage = firebase.storage();
+export const auth = firebase.auth();
+
+// signin options
 
 // refs
 export const postRef = firestore.collection("posts");

@@ -1,34 +1,56 @@
 import React from "react";
-import { Button, Form, Input, Layout, Typography } from "antd";
+import { Button, Form, Input, Layout, message, Typography } from "antd";
+import { auth } from "../../firebase";
+
+enum BEM {
+  Form = "auth__form",
+}
 
 export default function Auth() {
-  function handleSubmit(values: any) {
-    console.log(values);
+  async function handleSubmit(values: { email: string; password: string }) {
+    try {
+      await auth.signInWithEmailAndPassword(values.email, values.password);
+      message.success("Welcome admin!");
+      window.location.pathname = "/dashboard/posts";
+    } catch (error) {
+      message.error("Invalid Credentials");
+    }
   }
 
   function handleGuest() {
+    message.warning("Welcome guest!");
     return (window.location.pathname = "/dashboard/posts");
   }
 
-  console.log("auth");
-
   return (
     <Layout className="default auth">
-      <Form onFinish={handleSubmit}>
+      <Form className={BEM.Form} onFinish={handleSubmit}>
+        <Typography.Text>Email</Typography.Text>
         <Form.Item
-          rules={[{ required: true, message: "Please input your username." }]}
+          name="email"
+          rules={[
+            {
+              required: true,
+              type: "email",
+              message: "Please input your email.",
+            },
+          ]}
         >
-          <Typography.Text>Username</Typography.Text>
-          <Input name="username" />
+          <Input />
         </Form.Item>
+        <Typography.Text>Password</Typography.Text>
         <Form.Item
+          name="password"
           rules={[{ required: true, message: "Please input your password." }]}
         >
-          <Typography.Text>Password</Typography.Text>
           <Input.Password name="password" />
         </Form.Item>
         <Form.Item>
-          <Button className="primary-button" htmlType="submit">
+          <Button
+            className="auth__form-button"
+            htmlType="submit"
+            style={{ marginRight: "10px" }}
+          >
             Login
           </Button>
           <Button onClick={handleGuest}>Sign in as Guest</Button>

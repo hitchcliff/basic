@@ -29,7 +29,7 @@ export default function Showcase() {
           in Communication.
         </Text>
         <Col>
-          <Button>Download CV</Button>
+          <Button className="primary">Download CV</Button>
           <Button type="link" href="!#">
             View online
           </Button>
