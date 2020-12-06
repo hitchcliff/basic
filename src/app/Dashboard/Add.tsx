@@ -17,7 +17,7 @@ interface AppPostProps {
 }
 
 const defaultPost = {
-  id: "1",
+  id: Date.now().toString(),
   title: "title",
   content:
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",

@@ -18,7 +18,7 @@ interface EditProps {
   postid: string;
 }
 
-export default function Edit({ handleClick, postid }: EditProps) {
+export default function EditPost({ handleClick, postid }: EditProps) {
   const { editPost } = useBlogService();
   const [upload, setUpload] = useState<boolean>(false);
   const fetchPostById: PostTypes | undefined = useSelector((state: RootState) =>
@@ -31,7 +31,7 @@ export default function Edit({ handleClick, postid }: EditProps) {
 
   function handleImageUpload(file: File) {
     setUpdatePost({
-      ...newPost,
+      ...updatePost,
       image: file,
     });
   }

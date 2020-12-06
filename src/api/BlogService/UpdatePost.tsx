@@ -10,20 +10,32 @@ export default async function UpdatePost(
 ) {
   try {
     const edittedPost = post as PostTypes;
+    let newPost; // contains the edited post
 
-    const image = await storage
-      .ref()
-      .child("featured images")
-      .child(edittedPost.user.uid)
-      .child(edittedPost.image.name)
-      .put(edittedPost.image);
+    // check if there is new uploaded image
+    if (typeof edittedPost.image !== "string") {
+      console.log("not string");
 
-    const imageURL: File = await image.ref.getDownloadURL();
+      const image = await storage
+        .ref()
+        .child("post images")
+        .child(edittedPost.user.uid)
+        .child(edittedPost.image.name)
+        .put(edittedPost.image);
 
-    const newPost = {
-      ...edittedPost,
-      image: imageURL,
-    } as PostTypes;
+      const imageURL: File = await image.ref.getDownloadURL();
+
+      newPost = {
+        ...edittedPost,
+        image: imageURL,
+      };
+    } else {
+      console.log("string");
+
+      newPost = {
+        ...edittedPost,
+      } as PostTypes;
+    }
 
     await postRef.doc(id).update(newPost);
 

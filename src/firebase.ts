@@ -23,6 +23,7 @@ export const storage = firebase.storage();
 
 // refs
 export const postRef = firestore.collection("posts");
+export const projectRef = firestore.collection("projects");
 
 firestore.settings({});
 

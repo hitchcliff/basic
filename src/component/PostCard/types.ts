@@ -6,3 +6,5 @@ export interface PostTypes {
   image: any;
   user: { name: string; uid: string };
 }
+
+export interface ProjectTypes extends PostTypes {}

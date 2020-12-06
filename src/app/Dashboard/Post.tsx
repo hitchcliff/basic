@@ -7,7 +7,7 @@ import { postSelectAllSelector } from "../../features/Post/post.selector";
 import { PostTypes } from "../../component/PostCard/types";
 import { fetchAllPosts } from "../../features/Post/post.thunk";
 import { useDispatch, useSelector } from "react-redux";
-import Edit from "./Edit";
+import EditPost from "./EditPost";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -69,7 +69,7 @@ export default function Posts() {
           })}
         </Col>
       ) : (
-        <Edit handleClick={setEditting} postid={currentEditId} />
+        <EditPost handleClick={setEditting} postid={currentEditId} />
       )}
     </Row>
   );
