@@ -8,7 +8,7 @@ export default async function AddPosts(post: PostTypes, dispatch: Dispatch) {
   try {
     const image = await storage
       .ref()
-      .child("featured images")
+      .child("post images")
       .child(post.user.uid)
       .child(post.image.name)
       .put(post.image);

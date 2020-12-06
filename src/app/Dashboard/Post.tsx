@@ -53,7 +53,7 @@ export default function Posts() {
                 <PostCard post={post}>
                   <Button
                     className="delete-button"
-                    onClick={() => destroyPost(post.id)}
+                    onClick={() => destroyPost(post)}
                   >
                     Delete
                   </Button>

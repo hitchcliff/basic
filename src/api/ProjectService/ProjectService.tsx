@@ -14,8 +14,8 @@ export default class ProjectService {
     return AddProject(project, Store.dispatch);
   }
 
-  destroyProject(id: string) {
-    return DestroyProject(id, Store.dispatch);
+  destroyProject(project: ProjectTypes) {
+    return DestroyProject(project, Store.dispatch);
   }
 
   editProject(project: ProjectTypes | {}, id: string) {

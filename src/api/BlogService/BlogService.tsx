@@ -18,7 +18,7 @@ export default class BlogService {
     return UpdatePost(post, id, Store.dispatch);
   }
 
-  destroyPost(id: string) {
-    return DestroyPost(id, Store.dispatch);
+  destroyPost(post: PostTypes) {
+    return DestroyPost(post, Store.dispatch);
   }
 }

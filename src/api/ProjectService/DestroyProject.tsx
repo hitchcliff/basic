@@ -1,11 +1,20 @@
 import { Dispatch } from "@reduxjs/toolkit";
+import { ProjectTypes } from "../../component/PostCard/types";
 import { destroyProject } from "../../features/Project/project.slice";
-import { projectRef } from "../../firebase";
+import { projectRef, storage } from "../../firebase";
 
-export default async function DestroyProject(id: string, dispatch: Dispatch) {
+export default async function DestroyProject(
+  project: ProjectTypes,
+  dispatch: Dispatch
+) {
   try {
-    await projectRef.doc(id).delete();
-    dispatch(destroyProject(id));
+    await projectRef.doc(project.id).delete();
+
+    if (project.image) {
+      await storage.refFromURL(project.image).delete();
+    }
+
+    dispatch(destroyProject(project.id));
   } catch (error) {
     console.log("deleting a project", error);
   }

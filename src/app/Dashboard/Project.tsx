@@ -54,7 +54,7 @@ export default function Project() {
                 <PostCard post={project}>
                   <Button
                     className="delete-button"
-                    onClick={() => destroyProject(project.id)}
+                    onClick={() => destroyProject(project)}
                   >
                     Delete
                   </Button>
