@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "antd";
+import { Button, Col, message, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import PostCard from "../../component/PostCard/PostCard";
 import Add from "./Add";
@@ -8,6 +8,7 @@ import { projectSelectAllSelector } from "../../features/Project/project.selecto
 import { fetchAllProjects } from "../../features/Project/project.thunk";
 import useProjectService from "../Hooks/useProjectService";
 import EditProject from "./EditProject";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -19,6 +20,7 @@ enum BEM {
 export default function Project() {
   const [editting, setEditting] = useState(false);
   const [currentEditId, setCurrentEditId] = useState<string>("");
+  const user = useSelector(userSelectAllSelector);
 
   const { addProject, destroyProject } = useProjectService();
 
@@ -29,8 +31,26 @@ export default function Project() {
     dispatch(fetchAllProjects());
   }, [dispatch]);
 
-  function handleClick(project: ProjectTypes) {
-    addProject(project);
+  function handleSave(project: ProjectTypes) {
+    if (user[0].uid === "ZFIqdze4pAMbzMGEaJzuSh1Q3vt1" && user[0].logged) {
+      addProject({
+        ...project,
+        user: {
+          uid: user[0].uid,
+          name: "Kevin Nacario",
+        },
+      });
+    } else {
+      message.warning("Cannot create a project.");
+    }
+  }
+
+  function handleDestroy(project: ProjectTypes) {
+    if (user[0].uid === "ZFIqdze4pAMbzMGEaJzuSh1Q3vt1" && user[0].logged) {
+      destroyProject(project);
+    } else {
+      message.warning("Cannot destroy a project.");
+    }
   }
 
   function handleEdit(id: string) {
@@ -41,7 +61,7 @@ export default function Project() {
   return (
     <Row className={BEM.Layout} align="top">
       <Col md={8} className={BEM.Form} style={{ marginRight: "10px" }}>
-        <Add title="Add a project" handleClick={handleClick} />
+        <Add title="Add a project" handleClick={handleSave} />
       </Col>
 
       {/* if edit, show `Edit` Component */}
@@ -54,7 +74,7 @@ export default function Project() {
                 <PostCard post={project}>
                   <Button
                     className="delete-button"
-                    onClick={() => destroyProject(project)}
+                    onClick={() => handleDestroy(project)}
                   >
                     Delete
                   </Button>

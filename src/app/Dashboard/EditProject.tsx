@@ -1,9 +1,10 @@
-import { Button, Form, Input, Typography } from "antd";
+import { Button, Form, Input, message, Typography } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { ImageUpload } from "../../component";
 import { ProjectTypes } from "../../component/PostCard/types";
 import { projectSelector } from "../../features/Project/project.selectors";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 import { RootState } from "../../Store";
 import useProjectService from "../Hooks/useProjectService";
 
@@ -21,6 +22,8 @@ interface EditProps {
 export default function EditProject({ handleClick, projectid }: EditProps) {
   const { editProject } = useProjectService();
   const [upload, setUpload] = useState<boolean>(false);
+  const user = useSelector(userSelectAllSelector);
+
   const fetchProjectById:
     | ProjectTypes
     | undefined = useSelector((state: RootState) =>
@@ -39,8 +42,13 @@ export default function EditProject({ handleClick, projectid }: EditProps) {
   }
 
   function handleSave() {
-    editProject(updateProject, projectid);
-    handleClick(false);
+    if (user[0].uid === "ZFIqdze4pAMbzMGEaJzuSh1Q3vt1" && user[0].logged) {
+      editProject(updateProject, projectid);
+      handleClick(false);
+    } else {
+      handleClick(false);
+      message.warning("Cannot save a project.");
+    }
   }
 
   return (
