@@ -1,9 +1,10 @@
-import { Button, Form, Input, Typography } from "antd";
+import { Button, Form, Input, message, Typography } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { ImageUpload } from "../../component";
 import { PostTypes } from "../../component/PostCard/types";
 import { postSelector } from "../../features/Post/post.selector";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 import { RootState } from "../../Store";
 import useBlogService from "../Hooks/useBlogService";
 
@@ -21,12 +22,15 @@ interface EditProps {
 export default function EditPost({ handleClick, postid }: EditProps) {
   const { editPost } = useBlogService();
   const [upload, setUpload] = useState<boolean>(false);
+  const user = useSelector(userSelectAllSelector);
   const fetchPostById: PostTypes | undefined = useSelector((state: RootState) =>
     postSelector.selectById(state, postid)
   );
+
   const [updatePost, setUpdatePost] = useState<PostTypes | {}>({
     ...fetchPostById,
   });
+
   const newPost = updatePost as PostTypes;
 
   function handleImageUpload(file: File) {
@@ -37,8 +41,14 @@ export default function EditPost({ handleClick, postid }: EditProps) {
   }
 
   function handleSave() {
-    editPost(updatePost, postid);
-    handleClick(false);
+    // check if its me
+    if (user[0].uid === "ZFIqdze4pAMbzMGEaJzuSh1Q3vt1" && user[0].logged) {
+      editPost(updatePost, postid);
+      handleClick(false);
+    } else {
+      handleClick(false);
+      message.warning("Cannot save a post.");
+    }
   }
 
   return (

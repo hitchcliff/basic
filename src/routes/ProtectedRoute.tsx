@@ -6,8 +6,8 @@ import { Direction } from "../App.types";
 import subscribeUser from "../api/UserService/subscribeUser";
 
 export default function ProtectedRoute({ children, ...rest }: any) {
-  subscribeUser();
   const user = useSelector(userSelectAllSelector);
+  subscribeUser();
 
   return (
     <Route

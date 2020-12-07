@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "antd";
+import { Button, Col, message, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import PostCard from "../../component/PostCard/PostCard";
 import Add from "./Add";
@@ -8,6 +8,7 @@ import { PostTypes } from "../../component/PostCard/types";
 import { fetchAllPosts } from "../../features/Post/post.thunk";
 import { useDispatch, useSelector } from "react-redux";
 import EditPost from "./EditPost";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -19,6 +20,7 @@ enum BEM {
 export default function Posts() {
   const [editting, setEditting] = useState(false);
   const [currentEditId, setCurrentEditId] = useState<string>("");
+  const user = useSelector(userSelectAllSelector);
 
   const { addPost, destroyPost } = useBlogService();
   const posts: PostTypes[] = useSelector(postSelectAllSelector);
@@ -28,8 +30,28 @@ export default function Posts() {
     dispatch(fetchAllPosts());
   }, [dispatch]);
 
-  function handleClick(post: PostTypes) {
-    addPost(post);
+  function handleAdd(post: PostTypes) {
+    // check if its me
+    if (user[0].uid === "ZFIqdze4pAMbzMGEaJzuSh1Q3vt1" && user[0].logged) {
+      addPost({
+        ...post,
+        user: {
+          uid: user[0].uid,
+          name: "Kevin Nacario",
+        },
+      });
+    } else {
+      message.warning("Cannot create a post.");
+    }
+  }
+
+  function handleDestroy(post: PostTypes) {
+    // check if its me
+    if (user[0].uid === "ZFIqdze4pAMbzMGEaJzuSh1Q3vt1" && user[0].logged) {
+      destroyPost(post);
+    } else {
+      message.warning("Cannot delete a post.");
+    }
   }
 
   function handleEdit(id: string) {
@@ -40,7 +62,7 @@ export default function Posts() {
   return (
     <Row className={BEM.Layout} align="top">
       <Col md={8} className={BEM.Form} style={{ marginRight: "10px" }}>
-        <Add title="Add a post" handleClick={handleClick} />
+        <Add title="Add a post" handleClick={handleAdd} />
       </Col>
 
       {/* if edit, show `Edit` Component */}
@@ -53,7 +75,7 @@ export default function Posts() {
                 <PostCard post={post}>
                   <Button
                     className="delete-button"
-                    onClick={() => destroyPost(post)}
+                    onClick={() => handleDestroy(post)}
                   >
                     Delete
                   </Button>

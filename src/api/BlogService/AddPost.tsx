@@ -3,6 +3,8 @@ import { PostTypes } from "../../component/PostCard/types";
 import { addPost } from "../../features/Post/post.slice";
 import { postRef, storage } from "../../firebase";
 import { DocumentData } from "@firebase/firestore-types";
+import { useSelector } from "react-redux";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 
 export default async function AddPosts(post: PostTypes, dispatch: Dispatch) {
   try {
@@ -13,6 +15,7 @@ export default async function AddPosts(post: PostTypes, dispatch: Dispatch) {
       .child(post.image.name)
       .put(post.image);
 
+    // image url
     const imageURL: File = await image.ref.getDownloadURL();
 
     const newPost = {

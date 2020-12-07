@@ -1,7 +1,9 @@
 import { Button, Card, Form, Input, Typography } from "antd";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { ImageUpload } from "../../component";
 import { PostTypes } from "../../component/PostCard/types";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 
 const { TextArea } = Input;
 const { Text } = Typography;
