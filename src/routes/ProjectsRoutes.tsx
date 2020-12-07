@@ -7,15 +7,13 @@ import { Projects, SingleProject } from "../app/index";
 export default function ProjectsRoutes() {
   return (
     <Suspense fallback={<Loading />}>
-      <Router>
-        <Switch>
-          <Route exact path={Direction.Projects} component={Projects} />
-          <Route
-            path={Direction.Projects + "/:projectid"}
-            component={SingleProject}
-          />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route exact path={Direction.Projects} component={Projects} />
+        <Route
+          path={Direction.Projects + "/:projectid"}
+          component={SingleProject}
+        />
+      </Switch>
     </Suspense>
   );
 }

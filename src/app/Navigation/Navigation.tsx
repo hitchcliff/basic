@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 enum BEM {
   Menu = "navigation-menu",
@@ -8,20 +8,24 @@ enum BEM {
 }
 
 export default function Navigation() {
-  const [current, setCurrent] = useState<any>("");
+  const [current, setCurrent] = useState<any>("home");
+  const match = useRouteMatch("/:page");
   const history = useHistory();
 
   useEffect(() => {
-    history.push(`/${current}`);
-  }, [current, history]);
+    if (match.params.page) {
+      setCurrent(match.params.page);
+    }
+  }, [history]);
+
+  function switchPage(e: any) {
+    setCurrent(e.key);
+    history.push(`/${e.key}`);
+  }
 
   return (
     <Layout className={BEM.Menu}>
-      <Menu
-        className={BEM.List}
-        onClick={(e) => setCurrent(e.key)}
-        selectedKeys={[current]}
-      >
+      <Menu className={BEM.List} onClick={switchPage} selectedKeys={[current]}>
         <Menu.Item className={`${BEM.List}--nav`} key="home">
           Home
         </Menu.Item>
