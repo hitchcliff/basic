@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row, Typography } from "antd";
 import PostCard from "../../../component/PostCard/PostCard";
 import { PostTypes } from "../../../component/PostCard/types";
+import { Direction } from "../../../App.types";
 
 const { Title } = Typography;
 
@@ -60,15 +61,15 @@ export default function News() {
       </Title>
       <Row className={BEM.Posts}>
         <Col span={8}>
-          <PostCard post={sampleData[0]} />
+          <PostCard post={sampleData[0]} route={Direction.Blog} />
         </Col>
 
         <Col span={8}>
-          <PostCard post={sampleData[2]} />
+          <PostCard post={sampleData[2]} route={Direction.Blog} />
         </Col>
 
         <Col span={8}>
-          <PostCard post={sampleData[1]} />
+          <PostCard post={sampleData[1]} route={Direction.Blog} />
         </Col>
       </Row>
     </Row>

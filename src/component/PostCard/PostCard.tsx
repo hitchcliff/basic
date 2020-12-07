@@ -2,6 +2,7 @@ import { CalendarOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Image, Typography } from "antd";
 import React from "react";
 import { PostTypes } from "./types";
+import { useHistory } from "react-router-dom";
 
 const { Text, Paragraph, Title } = Typography;
 
@@ -13,6 +14,7 @@ enum BEM {
 
 interface PostCardProps {
   post: PostTypes;
+  route: string;
   children?: any;
   showImage?: boolean;
   hoverable?: boolean;
@@ -23,7 +25,10 @@ export default function PostCard({
   children,
   showImage,
   hoverable,
+  route,
 }: PostCardProps) {
+  const history = useHistory();
+
   return (
     <Card
       className={showImage ? "post-card post-card--hasImage " : BEM.Card}
@@ -32,7 +37,9 @@ export default function PostCard({
         <Title level={4} className={BEM.Title}>
           {post.title}
           <Col className={BEM.Col}>
-            <Button href="!#">View post</Button>
+            <Button onClick={() => history.push(`${route}/${post.id}`)}>
+              View post
+            </Button>
           </Col>
         </Title>
       }

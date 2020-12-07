@@ -9,6 +9,7 @@ import { fetchAllProjects } from "../../features/Project/project.thunk";
 import useProjectService from "../Hooks/useProjectService";
 import EditProject from "./EditProject";
 import { userSelectAllSelector } from "../../features/User/user.selector";
+import { Direction } from "../../App.types";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -71,7 +72,7 @@ export default function Project() {
           {projects.map((project: ProjectTypes) => {
             return (
               <Row key={project.id} className={BEM.Cards}>
-                <PostCard post={project}>
+                <PostCard post={project} route={Direction.Projects}>
                   <Button
                     className="delete-button"
                     onClick={() => handleDestroy(project)}

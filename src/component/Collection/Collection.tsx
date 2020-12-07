@@ -17,12 +17,14 @@ interface CollectionProps {
   data: PostTypes;
   title: string;
   handleSearch: (e: string) => void;
+  route: string;
 }
 
 export default function Collection({
   data,
   title,
   handleSearch,
+  route,
 }: CollectionProps) {
   return (
     <Row className="default collection ">
@@ -41,7 +43,7 @@ export default function Collection({
       </Row>
       <Row className={BEM.Cards}>
         <Col className={BEM.Col}>
-          <PostCard post={data} showImage />
+          <PostCard post={data} showImage route={route} />
         </Col>
       </Row>
     </Row>

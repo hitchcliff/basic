@@ -9,6 +9,7 @@ import { fetchAllPosts } from "../../features/Post/post.thunk";
 import { useDispatch, useSelector } from "react-redux";
 import EditPost from "./EditPost";
 import { userSelectAllSelector } from "../../features/User/user.selector";
+import { Direction } from "../../App.types";
 
 enum BEM {
   Layout = "dashboard-posts",
@@ -72,7 +73,7 @@ export default function Posts() {
           {posts.map((post: PostTypes) => {
             return (
               <Row key={post.id} className={BEM.Cards}>
-                <PostCard post={post}>
+                <PostCard post={post} route={Direction.Blog}>
                   <Button
                     className="delete-button"
                     onClick={() => handleDestroy(post)}
