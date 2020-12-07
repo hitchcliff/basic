@@ -12,3 +12,9 @@ h5,
 h6 {
   color: $color-2 !important;
 }
+
+.ant-btn {
+  span {
+    color: $color-1;
+  }
+}

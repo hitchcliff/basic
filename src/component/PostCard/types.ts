@@ -8,5 +8,5 @@ export interface PostTypes {
 }
 
 export interface ProjectTypes extends PostTypes {
-  demo: string;
+  demo?: string;
 }

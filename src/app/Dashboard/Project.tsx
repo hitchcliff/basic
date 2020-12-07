@@ -61,7 +61,7 @@ export default function Project() {
   return (
     <Row className={BEM.Layout} align="top">
       <Col md={8} className={BEM.Form} style={{ marginRight: "10px" }}>
-        <Add title="Add a project" handleClick={handleSave} />
+        <Add title="Add a project" handleClick={handleSave} hasDemo />
       </Col>
 
       {/* if edit, show `Edit` Component */}

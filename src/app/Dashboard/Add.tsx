@@ -1,9 +1,7 @@
 import { Button, Card, Form, Input, Typography } from "antd";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { ImageUpload } from "../../component";
-import { PostTypes } from "../../component/PostCard/types";
-import { userSelectAllSelector } from "../../features/User/user.selector";
+import { ProjectTypes } from "../../component/PostCard/types";
 
 const { TextArea } = Input;
 const { Text } = Typography;
@@ -13,11 +11,6 @@ enum BEM {
   Button = "dashboard-add-post__button",
 }
 
-interface AppPostProps {
-  title: string;
-  handleClick: (e: any) => void;
-}
-
 const defaultPost = {
   id: Date.now().toString(),
   title: "title",
@@ -25,14 +18,21 @@ const defaultPost = {
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
   createdAt: new Date().toDateString(),
   image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
+  demo: "",
   user: {
     name: "Kevin Nacario",
     uid: "1231231",
   },
 };
 
-export default function AddPost({ title, handleClick }: AppPostProps) {
-  const [newPost, setNewPost] = useState<PostTypes>({
+interface AppPostProps {
+  title: string;
+  handleClick: (e: any) => void;
+  hasDemo?: boolean;
+}
+
+export default function AddPost({ title, handleClick, hasDemo }: AppPostProps) {
+  const [newPost, setNewPost] = useState<ProjectTypes>({
     ...defaultPost,
   });
 
@@ -66,6 +66,16 @@ export default function AddPost({ title, handleClick }: AppPostProps) {
             handleChange={(file) => setNewPost({ ...newPost, image: file })}
           />
         </Form.Item>
+        {hasDemo && (
+          <Form.Item>
+            <Text>Demo Url</Text>
+            <Input
+              onChange={(e) =>
+                setNewPost({ ...newPost, demo: e.currentTarget.value })
+              }
+            />
+          </Form.Item>
+        )}
         <Form.Item>
           <Button className={BEM.Button} onClick={() => handleClick(newPost)}>
             Submit

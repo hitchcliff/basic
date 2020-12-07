@@ -28,6 +28,13 @@ button.primary {
   }
 }
 
+.demo-button {
+  color: $color-1;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
 .logout-button {
   background: $color-2;
   color: white;

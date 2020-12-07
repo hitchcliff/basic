@@ -15,13 +15,19 @@ interface PostCardProps {
   post: PostTypes;
   children?: any;
   showImage?: boolean;
+  hoverable?: boolean;
 }
 
-export default function PostCard({ post, children, showImage }: PostCardProps) {
+export default function PostCard({
+  post,
+  children,
+  showImage,
+  hoverable,
+}: PostCardProps) {
   return (
     <Card
       className={showImage ? "post-card post-card--hasImage " : BEM.Card}
-      hoverable
+      hoverable={hoverable}
       title={
         <Title level={4} className={BEM.Title}>
           {post.title}
