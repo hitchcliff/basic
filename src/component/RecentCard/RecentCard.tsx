@@ -20,10 +20,10 @@ export default function RecentCard({ recent }: RecentCardProps) {
   return (
     <Card className={BEM.Layout}>
       <Row className={BEM.Recent}>
-        <Col span={7}>
+        <Col>
           <Image className={BEM.Image} src={recent.image} />
         </Col>
-        <Col span={17}>
+        <Col>
           <Title className={BEM.Title} level={4}>
             {recent.title}
           </Title>

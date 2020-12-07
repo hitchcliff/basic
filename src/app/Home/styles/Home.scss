@@ -21,8 +21,9 @@
 // showcase
 .home-news {
   &__posts {
-    flex-wrap: nowrap !important;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
   }
 
   &-title {
@@ -110,3 +111,6 @@
     font-size: 2rem;
   }
 }
+
+// media
+@import "./Media.scss";

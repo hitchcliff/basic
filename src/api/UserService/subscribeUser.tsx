@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { signIn } from "../../features/User/user.slice";
 import { auth } from "../../firebase";
 import Store from "../../Store";

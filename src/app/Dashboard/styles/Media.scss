@@ -26,4 +26,29 @@
   .dashboard-content {
     padding: 80px 50px;
   }
+
+  .dashboard-posts {
+    &__content {
+      column-count: 2;
+    }
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .dashboard-posts {
+    &__content {
+      column-count: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .dashboard-posts {
+    flex-wrap: wrap;
+    &__form {
+      width: 100%;
+      margin: 10px 0 10px 0;
+      margin-right: 0 !important;
+    }
+  }
 }

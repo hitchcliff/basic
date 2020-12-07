@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Col, Row, Typography } from "antd";
 import PostCard from "../../../component/PostCard/PostCard";
-import { PostTypes } from "../../../component/PostCard/types";
 import { Direction } from "../../../App.types";
 import { fetchAllPosts } from "../../../features/Post/post.thunk";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,9 +28,7 @@ export default function News() {
     return () => {
       clearTimeout(req);
     };
-  }, []);
-
-  console.log(posts);
+  }, [dispatch]);
 
   return (
     <Row className="default home-news">
@@ -41,7 +38,7 @@ export default function News() {
       <Row className={BEM.Posts}>
         {posts.map((post) => {
           return (
-            <Col key={post.id} span={8}>
+            <Col key={post.id}>
               <PostCard
                 post={post}
                 route={Direction.Blog}

@@ -16,7 +16,7 @@ export default function Navigation() {
     if (match?.params.page) {
       setCurrent(match.params.page);
     }
-  }, [history]);
+  }, [history, match?.params.page]);
 
   function switchPage(e: any) {
     setCurrent(e.key);

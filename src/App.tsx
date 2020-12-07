@@ -5,7 +5,6 @@ import { Direction } from "./App.types";
 import Loading from "./component/Loading/Loading";
 import DashboardRoute from "./routes/Dashboard.route";
 import AppRoutes from "./routes/App.route";
-import { Navigation } from "./app/index";
 
 function App() {
   return (
