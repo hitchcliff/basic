@@ -1,4 +1,4 @@
-import Password from "antd/lib/input/Password";
+import { message } from "antd";
 import { signIn, signOut } from "../../features/User/user.slice";
 import { auth } from "../../firebase";
 import Store from "../../Store";
@@ -10,12 +10,16 @@ export default class UserService {
 
       auth.onAuthStateChanged((user: any) => {
         Store.dispatch(
-          signIn({ uid: user.uid, email: user.email, isGuess: false })
+          signIn({
+            uid: user.uid,
+            email: user.email,
+            isGuess: false,
+          })
         );
-
-        window.location.pathname = "/dashboard";
+        message.success("Welcome back, Kevin!");
       });
     } catch (error) {
+      message.error("Invalid credentials");
       console.error("signing in ", error);
     }
   }
@@ -25,9 +29,11 @@ export default class UserService {
       await auth.signOut();
       auth.onAuthStateChanged(() => {
         Store.dispatch(signOut());
-        window.location.pathname = "/";
+
+        message.success("Logged out");
       });
     } catch (error) {
+      message.error("Please try again later.");
       console.error("signing out ", error);
     }
   }
@@ -35,10 +41,14 @@ export default class UserService {
   async signInGuess() {
     try {
       await auth.signInWithEmailAndPassword("guest@email.com", "123456");
+
       auth.onAuthStateChanged((user: any) => {
         Store.dispatch(signIn({ uid: user.uid, email: user.email }));
+
+        message.success("Welcome, guest!");
       });
     } catch (error) {
+      message.info("Invalid credentials");
       console.error("signin guess ", error);
     }
   }

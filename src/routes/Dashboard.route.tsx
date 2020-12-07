@@ -10,13 +10,11 @@ import ProtectedRoute from "./ProtectedRoute";
 export default function DashboardRoute() {
   return (
     <Suspense fallback={<Loading />}>
-      <Router>
-        <Switch>
-          <Route path={Direction.Dashboard} component={Dashboard} />
-          <Route path={Direction.Dashboard + "/posts"} component={Posts} />
-          <Route path={Direction.Dashboard + "/projects"} component={Project} />
-        </Switch>
-      </Router>
+      <Switch>
+        <ProtectedRoute path={Direction.Dashboard}>
+          <Dashboard />
+        </ProtectedRoute>
+      </Switch>
     </Suspense>
   );
 }

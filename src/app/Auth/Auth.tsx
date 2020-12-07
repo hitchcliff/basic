@@ -1,6 +1,9 @@
 import React from "react";
 import { Button, Form, Input, Layout, Typography } from "antd";
+import { Redirect, useLocation } from "react-router-dom";
 import userUserService from "../Hooks/useUserService";
+import { useSelector } from "react-redux";
+import { userSelectAllSelector } from "../../features/User/user.selector";
 
 enum BEM {
   Form = "auth__form",
@@ -8,6 +11,8 @@ enum BEM {
 
 export default function Auth() {
   const { signInUser, signInGuess } = userUserService();
+  const user = useSelector(userSelectAllSelector);
+  const { state } = useLocation();
 
   function handleSubmit(values: { email: string; password: string }) {
     signInUser(values.email, values.password);
@@ -15,6 +20,10 @@ export default function Auth() {
 
   function handleGuest() {
     signInGuess();
+  }
+
+  if (user.length) {
+    return <Redirect to={state?.from || "/dashboard"} />;
   }
 
   return (

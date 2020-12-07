@@ -13,7 +13,7 @@ export default function Navigation() {
   const history = useHistory();
 
   useEffect(() => {
-    if (match.params.page) {
+    if (match?.params.page) {
       setCurrent(match.params.page);
     }
   }, [history]);
