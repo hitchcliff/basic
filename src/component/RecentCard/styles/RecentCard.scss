@@ -4,10 +4,17 @@
     margin: 20px 0 20px 0 !important;
   }
 
+  &__recent {
+    .ant-image {
+      height: 100%;
+    }
+  }
+
   &-card {
     &__image {
       border-radius: 50%;
       width: 80px;
+      height: 100%;
     }
   }
 }

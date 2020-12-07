@@ -6,7 +6,6 @@ export interface SingleTypes {
   author: string;
   content: string;
   image: string;
-  recent: RecentTypes[];
 }
 
 export interface RecentTypes {

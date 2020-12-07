@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Direction } from "../../App.types";
 import Collection from "../../component/Collection/Collection";
-import { sampleData } from "../Home/News/News";
+import { projectSelectAllSelector } from "../../features/Project/project.selectors";
+import { fetchAllProjects } from "../../features/Project/project.thunk";
 
 export default function Projects() {
-  const [search, setSearch] = useState<string>();
-  console.log("from projects", search);
+  const dispatch = useDispatch();
+  const projects = useSelector(projectSelectAllSelector);
+
+  useEffect(() => {
+    dispatch(fetchAllProjects());
+  }, [dispatch]);
+
   return (
-    <Collection
-      data={sampleData[0]}
-      title="Projects"
-      handleSearch={setSearch}
-      route={Direction.Projects}
-    />
+    <Collection data={projects} title="Projects" route={Direction.Projects} />
   );
 }

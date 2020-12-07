@@ -5,6 +5,7 @@ const { Title, Paragraph } = Typography;
 
 enum BEM {
   Layout = "recent-post",
+  Recent = "recent-post__recent",
   Heading = "recent-post__heading",
   Title = "recent-post-card__title",
   Text = "recent-post-card__text",
@@ -18,7 +19,7 @@ interface RecentCardProps {
 export default function RecentCard({ recent }: RecentCardProps) {
   return (
     <Card className={BEM.Layout}>
-      <Row>
+      <Row className={BEM.Recent}>
         <Col span={7}>
           <Image className={BEM.Image} src={recent.image} />
         </Col>

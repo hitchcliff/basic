@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Direction } from "../../App.types";
 import Collection from "../../component/Collection/Collection";
-import { sampleData } from "../Home/News/News";
+import { postSelectAllSelector } from "../../features/Post/post.selector";
+import { fetchAllPosts } from "../../features/Post/post.thunk";
 
 export default function Blog() {
-  const [search, setSearch] = useState<string>();
-  console.log("from blog", search);
-  return (
-    <Collection
-      data={sampleData[0]}
-      title="Blog"
-      handleSearch={setSearch}
-      route={Direction.Blog}
-    />
-  );
+  const dispatch = useDispatch();
+  const posts = useSelector(postSelectAllSelector);
+
+  useEffect(() => {
+    dispatch(fetchAllPosts());
+  }, [dispatch]);
+
+  return <Collection data={posts} title="Blog" route={Direction.Blog} />;
 }

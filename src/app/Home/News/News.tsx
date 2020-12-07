@@ -17,45 +17,6 @@ enum BEM {
   Title = "home-news-card__title",
 }
 
-export const sampleData: PostTypes[] = [
-  {
-    id: "1",
-    title: "title",
-    content:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-    createdAt: "Feb. 6, 1998",
-    image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
-    user: {
-      name: "Kevin Nacario",
-      uid: "1231231",
-    },
-  },
-  {
-    id: "2",
-    title: "title",
-    content:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-    createdAt: "Feb. 6, 1998",
-    image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
-    user: {
-      name: "Kevin Nacario",
-      uid: "1231231",
-    },
-  },
-  {
-    id: "3",
-    title: "title",
-    content:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto deserunt error perferendis cum illo? Repellat laudantium ex minusnemo quibusdam.",
-    createdAt: "Feb. 6, 1998",
-    image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
-    user: {
-      name: "Kevin Nacario",
-      uid: "1231231",
-    },
-  },
-];
-
 export default function News() {
   const dispatch = useDispatch();
   const posts = useSelector(postSelectAllSelector);
@@ -81,7 +42,12 @@ export default function News() {
         {posts.map((post) => {
           return (
             <Col key={post.id} span={8}>
-              <PostCard post={post} route={Direction.Blog} limit />
+              <PostCard
+                post={post}
+                route={Direction.Blog}
+                limit
+                showViewButton
+              />
             </Col>
           );
         })}

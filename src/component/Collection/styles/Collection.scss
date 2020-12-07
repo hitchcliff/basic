@@ -8,7 +8,7 @@
     }
     &--cards {
       display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
   }
@@ -26,11 +26,11 @@
   }
 
   .post-card--hasImage {
+    &__col {
+      padding: 24px;
+    }
     .ant-card-body {
       padding: 0 !important;
-      .ant-typography {
-        padding: 0 24px !important;
-      }
     }
     .ant-image {
       margin-bottom: 10px;

@@ -1,13 +1,9 @@
 import React from "react";
 import { Col, Divider, Image, Row, Typography } from "antd";
 import { RecentCard } from "..";
-import {
-  CalendarOutlined,
-  EditOutlined,
-  HeartOutlined,
-} from "@ant-design/icons";
-import { SingleTypes } from "./types";
+import { CalendarOutlined, EditOutlined } from "@ant-design/icons";
 import Comments from "./Comments";
+import { PostTypes, ProjectTypes } from "../PostCard/types";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -23,10 +19,11 @@ enum BEM {
 }
 
 interface SingleProps {
-  data: SingleTypes;
+  data: PostTypes | ProjectTypes;
+  recent: PostTypes[] | ProjectTypes[] | any;
 }
 
-export default function Single({ data }: SingleProps) {
+export default function Single({ data, recent }: SingleProps) {
   return (
     <Row className="default single" gutter={[16, 16]} justify="space-between">
       <Col style={{ display: "flex", flexDirection: "column" }} span={24}>
@@ -34,20 +31,19 @@ export default function Single({ data }: SingleProps) {
         <Row className={BEM.Meta}>
           <Title className={BEM.Heading}>{data.title}</Title>
           <Text className={BEM.Text}>
-            <CalendarOutlined /> {data.meta}
-            <EditOutlined /> <b>{data.author}</b>
-            <HeartOutlined className={BEM.Icon} />
+            <CalendarOutlined /> {data.createdAt}
+            <EditOutlined /> <b>{data.user.name}</b>
           </Text>
         </Row>
         <Divider />
-        <Paragraph>{data.content}</Paragraph>
+        <Paragraph style={{ whiteSpace: "pre-line" }}>{data.content}</Paragraph>
       </Col>
       <Comments>Yeep</Comments>
       <Col span={24}>
         <Title level={4}>Recent posts</Title>
         <Row className={BEM.Related}>
-          {data.recent.map((post, idx) => (
-            <RecentCard key={idx} recent={post} />
+          {recent.map((post: any) => (
+            <RecentCard key={post.id} recent={post} />
           ))}
         </Row>
       </Col>

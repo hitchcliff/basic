@@ -9,7 +9,7 @@ const { Text, Paragraph, Title } = Typography;
 enum BEM {
   Card = "post-card",
   Title = "post-card__title",
-  Col = "post-card__title-col",
+  Col = "post-card--hasImage__col",
   Paragraph = "post-card__paragraph",
 }
 
@@ -20,6 +20,7 @@ interface PostCardProps {
   showImage?: boolean;
   hoverable?: boolean;
   limit?: boolean;
+  showViewButton?: boolean;
 }
 
 export default function PostCard({
@@ -29,6 +30,7 @@ export default function PostCard({
   hoverable,
   route,
   limit,
+  showViewButton,
 }: PostCardProps) {
   const history = useHistory();
 
@@ -39,22 +41,28 @@ export default function PostCard({
       title={
         <Title level={4} className={BEM.Title}>
           {post.title}
-          <Col className={BEM.Col}>
-            <Button onClick={() => history.push(`${route}/${post.id}`)}>
-              View post
-            </Button>
-          </Col>
         </Title>
       }
     >
       {showImage && <Image src={post.image} alt={post.title} />}
 
-      <Text>
-        <CalendarOutlined /> {post.createdAt}
-      </Text>
-      <Paragraph className={limit ? BEM.Paragraph : ""}>
-        {post.content}
-      </Paragraph>
+      <div className={showImage ? BEM.Col : ""}>
+        <Text>
+          <CalendarOutlined /> {post.createdAt}
+        </Text>
+
+        <Col>
+          <Paragraph className={limit ? BEM.Paragraph : ""}>
+            {post.content}
+          </Paragraph>
+
+          {showViewButton && (
+            <Button onClick={() => history.push(`${route}/${post.id}`)}>
+              View post
+            </Button>
+          )}
+        </Col>
+      </div>
       {children}
     </Card>
   );
