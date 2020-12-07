@@ -10,6 +10,7 @@ enum BEM {
   Card = "post-card",
   Title = "post-card__title",
   Col = "post-card__title-col",
+  Paragraph = "post-card__paragraph",
 }
 
 interface PostCardProps {
@@ -18,6 +19,7 @@ interface PostCardProps {
   children?: any;
   showImage?: boolean;
   hoverable?: boolean;
+  limit?: boolean;
 }
 
 export default function PostCard({
@@ -26,6 +28,7 @@ export default function PostCard({
   showImage,
   hoverable,
   route,
+  limit,
 }: PostCardProps) {
   const history = useHistory();
 
@@ -49,7 +52,9 @@ export default function PostCard({
       <Text>
         <CalendarOutlined /> {post.createdAt}
       </Text>
-      <Paragraph>{post.content}</Paragraph>
+      <Paragraph className={limit ? BEM.Paragraph : ""}>
+        {post.content}
+      </Paragraph>
       {children}
     </Card>
   );

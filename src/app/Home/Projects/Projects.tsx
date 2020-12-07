@@ -35,9 +35,8 @@ export default function Projects() {
   return (
     <Row gutter={[16, 16]} className="default home-projects">
       {projects.map((project) => {
-        console.log(project.demo);
         return (
-          <Col span={24}>
+          <Col key={project.id} span={24}>
             <Row className={BEM.Content}>
               <Col span={24}>
                 <Image src={project.image} />

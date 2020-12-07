@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row, Typography } from "antd";
 import PostCard from "../../../component/PostCard/PostCard";
 import { PostTypes } from "../../../component/PostCard/types";
 import { Direction } from "../../../App.types";
+import { fetchAllPosts } from "../../../features/Post/post.thunk";
+import { useDispatch, useSelector } from "react-redux";
+import { postSelectAllSelector } from "../../../features/Post/post.selector";
 
 const { Title } = Typography;
 
@@ -54,23 +57,34 @@ export const sampleData: PostTypes[] = [
 ];
 
 export default function News() {
+  const dispatch = useDispatch();
+  const posts = useSelector(postSelectAllSelector);
+
+  useEffect(() => {
+    const req = setTimeout(() => {
+      dispatch(fetchAllPosts());
+    });
+
+    return () => {
+      clearTimeout(req);
+    };
+  }, []);
+
+  console.log(posts);
+
   return (
     <Row className="default home-news">
       <Title level={5} className={BEM.Heading}>
         My recent posts
       </Title>
       <Row className={BEM.Posts}>
-        <Col span={8}>
-          <PostCard post={sampleData[0]} route={Direction.Blog} />
-        </Col>
-
-        <Col span={8}>
-          <PostCard post={sampleData[2]} route={Direction.Blog} />
-        </Col>
-
-        <Col span={8}>
-          <PostCard post={sampleData[1]} route={Direction.Blog} />
-        </Col>
+        {posts.map((post) => {
+          return (
+            <Col key={post.id} span={8}>
+              <PostCard post={post} route={Direction.Blog} limit />
+            </Col>
+          );
+        })}
       </Row>
     </Row>
   );
