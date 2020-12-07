@@ -29,8 +29,15 @@ export default function Showcase() {
           in Communication.
         </Text>
         <Col>
-          <Button className="primary">Download CV</Button>
-          <Button type="link" href="!#">
+          <Button className="primary">
+            <a href="https://drive.google.com/u/1/uc?id=1SXz7rQwzIXjYl2S9624F67W15vb3BKCt&export=download">
+              Download CV
+            </a>
+          </Button>
+          <Button
+            type="link"
+            href="https://drive.google.com/file/d/1SXz7rQwzIXjYl2S9624F67W15vb3BKCt/view?usp=sharing"
+          >
             View online
           </Button>
         </Col>

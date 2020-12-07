@@ -2,6 +2,7 @@ import {
   FacebookOutlined,
   GithubOutlined,
   GooglePlusOutlined,
+  LinkedinOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
 import { Col, Row, Typography } from "antd";
@@ -44,10 +45,18 @@ export default function Footer() {
           </Col>
           <Col md={12}>
             <Content>
-              <FacebookOutlined className={BEM.Icons} />
-              <GithubOutlined className={BEM.Icons} />
-              <GooglePlusOutlined className={BEM.Icons} />
-              <TwitterOutlined className={BEM.Icons} />
+              <a href="https://www.facebook.com/notkev1n/">
+                <FacebookOutlined className={BEM.Icons} />
+              </a>
+              <a href="https://github.com/hitchcliff">
+                <GithubOutlined className={BEM.Icons} />
+              </a>
+              <a href="https://www.linkedin.com/in/kevin-nacario-57485718a/">
+                <LinkedinOutlined className={BEM.Icons} />
+              </a>
+              <a href="https://twitter.com/ilimitado7">
+                <TwitterOutlined className={BEM.Icons} />
+              </a>
             </Content>
             <Title className={BEM.Title} level={5}>
               Get in touch, I'll reply within 24 hours.

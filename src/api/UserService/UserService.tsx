@@ -9,14 +9,16 @@ export default class UserService {
       await auth.signInWithEmailAndPassword(email, pass);
 
       auth.onAuthStateChanged((user: any) => {
-        Store.dispatch(
-          signIn({
-            uid: user.uid,
-            email: user.email,
-            isGuess: false,
-          })
-        );
-        message.success("Welcome back, Kevin!");
+        if (user) {
+          Store.dispatch(
+            signIn({
+              uid: user.uid,
+              email: user.email,
+              isGuess: false,
+            })
+          );
+          message.success("Welcome back, Kevin!");
+        }
       });
     } catch (error) {
       message.error("Invalid credentials");
@@ -43,9 +45,10 @@ export default class UserService {
       await auth.signInWithEmailAndPassword("guest@email.com", "123456");
 
       auth.onAuthStateChanged((user: any) => {
-        Store.dispatch(signIn({ uid: user.uid, email: user.email }));
-
-        message.success("Welcome, guest!");
+        if (user) {
+          Store.dispatch(signIn({ uid: user.uid, email: user.email }));
+          message.success("Welcome, guest!");
+        }
       });
     } catch (error) {
       message.info("Invalid credentials");

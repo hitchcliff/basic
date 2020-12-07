@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Divider, Image, Row, Typography } from "antd";
-import { RecentCard } from "..";
 import { CalendarOutlined, EditOutlined } from "@ant-design/icons";
 import Comments from "./Comments";
 import { PostTypes, ProjectTypes } from "../PostCard/types";
@@ -39,14 +38,6 @@ export default function Single({ data, recent }: SingleProps) {
         <Paragraph style={{ whiteSpace: "pre-line" }}>{data.content}</Paragraph>
       </Col>
       <Comments>Yeep</Comments>
-      {/* <Col span={24}>
-        <Title level={4}>Recent posts</Title>
-        <Row className={BEM.Related}>
-          {recent.map((post: any) => (
-            <RecentCard key={post.id} recent={post} />
-          ))}
-        </Row>
-      </Col> */}
     </Row>
   );
 }

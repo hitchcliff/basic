@@ -27,3 +27,11 @@
     padding: 80px 50px;
   }
 }
+
+@media screen and (max-width: 780px) {
+  .footer {
+    &--header {
+      margin-top: 20px;
+    }
+  }
+}
