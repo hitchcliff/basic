@@ -7,7 +7,10 @@ import subscribeUser from "../api/UserService/subscribeUser";
 
 export default function ProtectedRoute({ children, ...rest }: any) {
   const user = useSelector(userSelectAllSelector);
-  subscribeUser();
+
+  useEffect(() => {
+    subscribeUser();
+  }, []);
 
   return (
     <Route

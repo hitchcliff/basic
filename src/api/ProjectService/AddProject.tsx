@@ -34,6 +34,7 @@ export default async function AddProject(
         content: data.content,
         createdAt: data.createdAt,
         image: imageURL,
+        demo: data.demo,
         user: {
           uid: data.user.uid,
           name: data.user.name,

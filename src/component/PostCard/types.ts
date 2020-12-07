@@ -7,4 +7,6 @@ export interface PostTypes {
   user: { name: string; uid: string };
 }
 
-export interface ProjectTypes extends PostTypes {}
+export interface ProjectTypes extends PostTypes {
+  demo: string;
+}

@@ -64,6 +64,15 @@
     margin-bottom: 20px !important;
     display: inline-block;
   }
+
+  &-row {
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    gap: 20px;
+    .ant-col {
+      width: 100%;
+    }
+  }
 }
 
 // technology

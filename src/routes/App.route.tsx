@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Loading from "../component/Loading/Loading";
 import { Direction } from "../App.types";
 import ProjectsRoutes from "./ProjectsRoutes";
