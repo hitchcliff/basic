@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://kevinnacario.com",
+  "resolutions": {
+    "@types/react": "16.9.53"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@reduxjs/toolkit": "^1.5.0",
@@ -11,7 +14,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
+    "@types/react": "16.9.53",
     "@types/react-dom": "^16.9.8",
     "antd": "^4.9.1",
     "firebase": "^8.1.1",

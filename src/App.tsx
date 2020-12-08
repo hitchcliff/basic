@@ -8,16 +8,14 @@ import AppRoutes from "./routes/App.route";
 
 function App() {
   return (
-    <>
-      <Suspense fallback={<Loading />}>
-        <Router>
-          <Switch>
-            <Route path={Direction.Dashboard} component={DashboardRoute} />
-            <Route exact path="*" component={AppRoutes} />
-          </Switch>
-        </Router>
-      </Suspense>
-    </>
+    <Suspense fallback={<Loading />}>
+      <Router>
+        <Switch>
+          <Route path={Direction.Dashboard} component={DashboardRoute} />
+          <Route exact path="*" component={AppRoutes} />
+        </Switch>
+      </Router>
+    </Suspense>
   );
 }
 
