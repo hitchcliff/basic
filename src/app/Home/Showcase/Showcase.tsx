@@ -20,13 +20,13 @@ export default function Showcase() {
     >
       <Col md={12}>
         <Title level={1}>
-          Hi, my name is Kevin and I'm a Frontend Developer.
+          Hi, my name is Kevin, I'm a Self-taught Frontend Developer, and I've
+          been coding for more than 2 years.
         </Title>
         <Text>
-          My name is Kevin Keans Nacario, you can call me Kevin. I’m 22 years
-          old. I’m a self-taught Frontend Developer. I graduated in the year of
-          2019-2020, Bachelor of Science Electronics Computer Technology major
-          in Communication.
+          I can build fullstack applications with Laravel, Firebase, and NodeJS
+          as well. I use React as my main framework and used tens to hundreds of
+          libraries, its just a matter of time.
         </Text>
         <Col>
           <Button className="primary">
