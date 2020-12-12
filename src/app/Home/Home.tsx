@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <Layout className={BEM.Home}>
       <Showcase />
-      <News />
       <Projects />
       <Expectation />
+      <News />
     </Layout>
   );
 }

@@ -26,7 +26,7 @@ export default function Collection({ data, title, route }: CollectionProps) {
           <Title level={2}>{title}</Title>
         </Col>
       </Row>
-      <Row className={BEM.Cards}>
+      <div className={BEM.Cards}>
         {data.map((item: any) => {
           return (
             <Col key={item.id} className={BEM.Col}>
@@ -40,7 +40,7 @@ export default function Collection({ data, title, route }: CollectionProps) {
             </Col>
           );
         })}
-      </Row>
+      </div>
     </Row>
   );
 }

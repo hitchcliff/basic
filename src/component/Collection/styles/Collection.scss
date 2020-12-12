@@ -7,9 +7,16 @@
       width: 100%;
     }
     &--cards {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      column-count: 3;
       gap: 20px;
+      .collection-col {
+        width: 100%;
+        break-inside: avoid-column;
+        max-width: 100%;
+        position: relative;
+        display: block;
+        margin-bottom: 20px;
+      }
     }
   }
 

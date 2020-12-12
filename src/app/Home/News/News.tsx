@@ -43,6 +43,7 @@ export default function News() {
                 post={post}
                 route={Direction.Blog}
                 limit
+                showImage
                 showViewButton
               />
             </Col>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Divider, Image, Row, Typography } from "antd";
 import { CalendarOutlined, EditOutlined } from "@ant-design/icons";
-import Comments from "./Comments";
 import { PostTypes, ProjectTypes } from "../PostCard/types";
 
 const { Title, Text, Paragraph } = Typography;
@@ -37,7 +36,7 @@ export default function Single({ data, recent }: SingleProps) {
         <Divider />
         <Paragraph style={{ whiteSpace: "pre-line" }}>{data.content}</Paragraph>
       </Col>
-      <Comments>Yeep</Comments>
+      {/* <Comments>Yeep</Comments> */}
     </Row>
   );
 }

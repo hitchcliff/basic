@@ -20,13 +20,13 @@ export default function Showcase() {
     >
       <Col md={12}>
         <Title level={1}>
-          Hi, my name is Kevin, I'm a Self-taught Frontend Developer, and I've
-          been coding for more than 2 years.
+          Hi, my name is Kevin, I'm a Self-taught Frontend, and Jr. Fullstack
+          Dev.
         </Title>
         <Text>
           I can build fullstack applications with Laravel, Firebase, and NodeJS
-          as well. I use React as my main framework and used tens to hundreds of
-          libraries, its just a matter of time.
+          as well. I use React as my main JS framework and was able to use
+          different technology along the way.
         </Text>
         <Col>
           <Button className="primary">
