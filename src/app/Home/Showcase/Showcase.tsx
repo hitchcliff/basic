@@ -19,14 +19,11 @@ export default function Showcase() {
       align="middle"
     >
       <Col md={12}>
-        <Title level={1}>
-          Hi, my name is Kevin, I'm a Self-taught Frontend, and Jr. Fullstack
-          Dev.
-        </Title>
+        <Title level={1}>Hi, my name is Kevin, I'm a Frontend Developer.</Title>
         <Text>
-          I can build fullstack applications with Laravel, Firebase, and NodeJS
-          as well. I use React as my main JS framework and was able to use
-          different technology along the way.
+          I was able to build an awesome UI, application for the web. I know
+          some basics in backend as well; <b>Laravel</b>, <b>Express</b>,{" "}
+          <b>Firebase</b>.
         </Text>
         <Col>
           <Button className="primary">

@@ -40,25 +40,30 @@ export default function Projects() {
             <Row className={BEM.Content}>
               <Col span={24}>
                 <Image src={project.image} />
+                {/* <Button
+                  className="details-button"
+                  onClick={() => handleClick(project.id)}
+                >
+                  More details
+                </Button> */}
               </Col>
               <Col md={24}>
-                <Title level={3}>{project.title}</Title>
+                <div>
+                  <Title level={3}>{project.title}</Title>
+                </div>
                 <Text className={BEM.Meta}>{project.createdAt}</Text>
                 <Paragraph>{project.content}</Paragraph>
                 <div>
-                  <Button
-                    className="details-button"
-                    onClick={() => handleClick(project.id)}
-                  >
-                    More details
+                  <Button className="source-code-button" href={project.source}>
+                    Source code
                   </Button>
                   <Button className="demo-button" href={project.demo}>
                     Demo
                   </Button>
                 </div>
               </Col>
-              <Divider />
             </Row>
+            <Divider />
           </Col>
         );
       })}

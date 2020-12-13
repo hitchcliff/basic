@@ -19,6 +19,7 @@ const defaultPost = {
   createdAt: new Date().toDateString(),
   image: "https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78",
   demo: "",
+  source: "",
   user: {
     name: "Kevin Nacario",
     uid: "1231231",
@@ -72,6 +73,16 @@ export default function AddPost({ title, handleClick, hasDemo }: AppPostProps) {
             <Input
               onChange={(e) =>
                 setNewPost({ ...newPost, demo: e.currentTarget.value })
+              }
+            />
+          </Form.Item>
+        )}
+        {hasDemo && (
+          <Form.Item>
+            <Text>Source Code</Text>
+            <Input
+              onChange={(e) =>
+                setNewPost({ ...newPost, source: e.currentTarget.value })
               }
             />
           </Form.Item>

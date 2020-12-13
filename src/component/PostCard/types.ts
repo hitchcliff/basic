@@ -9,4 +9,5 @@ export interface PostTypes {
 
 export interface ProjectTypes extends PostTypes {
   demo?: string;
+  source?: string;
 }
