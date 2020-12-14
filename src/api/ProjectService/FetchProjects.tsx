@@ -13,6 +13,7 @@ export default async function FetchProjects() {
         createdAt: data.createdAt,
         image: data.image,
         demo: data.demo,
+        source: data.source,
         user: {
           uid: data.user.uid,
           name: data.user.name,

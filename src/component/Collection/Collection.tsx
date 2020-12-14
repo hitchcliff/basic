@@ -29,7 +29,7 @@ export default function Collection({ data, title, route }: CollectionProps) {
       <div className={BEM.Cards}>
         {data.map((item: any) => {
           return (
-            <Col key={item.id} className={BEM.Col}>
+            <div key={item.id} className={BEM.Col}>
               <PostCard
                 post={item}
                 showImage
@@ -37,7 +37,7 @@ export default function Collection({ data, title, route }: CollectionProps) {
                 showViewButton
                 limit
               />
-            </Col>
+            </div>
           );
         })}
       </div>

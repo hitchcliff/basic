@@ -83,6 +83,27 @@ export default function EditProject({ handleClick, projectid }: EditProps) {
         )}
       </Form.Item>
       <Form.Item>
+        <Text>Demo Url</Text>
+        <Input
+          value={newProject.demo}
+          onChange={(e) =>
+            setUpdateProject({ ...updateProject, demo: e.currentTarget.value })
+          }
+        />
+      </Form.Item>
+      <Form.Item>
+        <Text>Source Code</Text>
+        <Input
+          value={newProject.source}
+          onChange={(e) =>
+            setUpdateProject({
+              ...updateProject,
+              source: e.currentTarget.value,
+            })
+          }
+        />
+      </Form.Item>
+      <Form.Item>
         <Button
           className="update-button"
           style={{ marginRight: "10px" }}

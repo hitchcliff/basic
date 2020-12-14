@@ -9,5 +9,9 @@
   padding: 0 !important;
 }
 
+.ant-image-img {
+  cursor: pointer;
+}
+
 // media
 @import "./Media.scss";
